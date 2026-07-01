@@ -6,6 +6,8 @@ from dotenv import load_dotenv
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv(BASE_DIR / '.env')
+if (BASE_DIR / '.env.prod').exists():
+    load_dotenv(BASE_DIR / '.env.prod', override=True)
 
 
 def env_bool(key: str, default: bool = False) -> bool:
@@ -14,7 +16,12 @@ def env_bool(key: str, default: bool = False) -> bool:
 
 def env_list(key: str, default: str = '') -> list[str]:
     raw = os.environ.get(key, default)
-    return [item.strip() for item in raw.split(',') if item.strip()]
+    hosts = []
+    for item in raw.split(','):
+        item = item.strip().strip('"').strip("'")
+        if item:
+            hosts.append(item)
+    return hosts
 
 
 SECRET_KEY = os.environ.get(
@@ -24,7 +31,16 @@ SECRET_KEY = os.environ.get(
 
 DEBUG = env_bool('DJANGO_DEBUG', True)
 
-ALLOWED_HOSTS = env_list('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1' if DEBUG else '')
+ALLOWED_HOSTS = env_list(
+    'DJANGO_ALLOWED_HOSTS',
+    'localhost,127.0.0.1' if DEBUG else '159.195.52.197,ornza.com,www.ornza.com',
+)
+
+if not DEBUG and not ALLOWED_HOSTS:
+    raise ValueError('DJANGO_ALLOWED_HOSTS must be set when DJANGO_DEBUG=False')
+
+USE_X_FORWARDED_HOST = True
+USE_X_FORWARDED_PORT = True
 
 INSTALLED_APPS = [
     'django.contrib.auth',

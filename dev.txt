@@ -57,4 +57,5 @@
 [DONE] UI Fix - Contact page layout restored (.page block layout + ornza.css contact classes)
 [DONE] UI Fix - Ivory page text contrast (about + FAQ sections on nav-solid pages)
 [DONE] Deploy - Docker + docker-compose (web, PostgreSQL, nginx) with .env.prod
+[DONE] Deploy - WEB_PORT default 8080 + scripts/deploy.sh for multi-project servers
 [IN PROGRESS] Phase 4 - Product CRUD via admin, order status updates, WhatsApp integration
