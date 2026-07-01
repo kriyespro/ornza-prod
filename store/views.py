@@ -1,29 +1,37 @@
 from django.views.generic import TemplateView, ListView, DetailView
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
 from core.mixins import RequestContextMixin
 from .models import Product, Category
 from .services import get_product_gallery
 
 
+@method_decorator(cache_page(300), name='dispatch')
 class HomeView(RequestContextMixin, TemplateView):
     template_name = 'store/home.jinja'
 
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
-        ctx['featured'] = Product.objects.filter(is_active=True, is_featured=True)[:8]
-        ctx['bestsellers'] = Product.objects.filter(is_active=True, is_bestseller=True)[:8]
+        ctx['featured'] = Product.objects.filter(
+            is_active=True, is_featured=True
+        ).select_related('category').prefetch_related('images')[:8]
+        ctx['bestsellers'] = Product.objects.filter(
+            is_active=True, is_bestseller=True
+        ).select_related('category').prefetch_related('images')[:8]
         ctx['categories'] = Category.objects.filter(is_active=True)
         return ctx
 
 
+@method_decorator(cache_page(300), name='dispatch')
 class CollectionsView(RequestContextMixin, ListView):
     template_name = 'store/collections.jinja'
     context_object_name = 'products'
     paginate_by = 24
 
     def get_queryset(self):
-        return Product.objects.filter(is_active=True).select_related('category')
+        return Product.objects.filter(is_active=True).select_related('category').prefetch_related('images')
 
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
@@ -38,7 +46,9 @@ class CategoryView(RequestContextMixin, ListView):
 
     def get_queryset(self):
         self.category = get_object_or_404(Category, slug=self.kwargs['slug'], is_active=True)
-        return Product.objects.filter(category=self.category, is_active=True)
+        return Product.objects.filter(
+            category=self.category, is_active=True
+        ).select_related('category').prefetch_related('images')
 
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
