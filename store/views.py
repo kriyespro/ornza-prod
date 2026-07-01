@@ -1,5 +1,6 @@
 from django.views.generic import TemplateView, ListView, DetailView
 from django.http import HttpResponse
+from django.shortcuts import get_object_or_404
 from core.mixins import RequestContextMixin
 from .models import Product, Category
 from .services import get_product_gallery
@@ -36,7 +37,7 @@ class CategoryView(RequestContextMixin, ListView):
     paginate_by = 24
 
     def get_queryset(self):
-        self.category = Category.objects.get(slug=self.kwargs['slug'], is_active=True)
+        self.category = get_object_or_404(Category, slug=self.kwargs['slug'], is_active=True)
         return Product.objects.filter(category=self.category, is_active=True)
 
     def get_context_data(self, **kwargs):
