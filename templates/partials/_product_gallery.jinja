@@ -1,0 +1,44 @@
+{# Product image gallery — main image + clickable thumbnails (Alpine.js) #}
+{% set gallery = gallery if gallery is defined and gallery else [] %}
+{% set fallback = static('images/ring_preview.png') %}
+
+<div class="product-gallery" x-data="{ active: 0 }">
+  <div class="relative bg-white border border-gold/20 rounded-lg overflow-hidden shadow-ornza aspect-square">
+    {% if gallery %}
+      {% for img in gallery %}
+      <img
+        src="{{ img.url }}"
+        alt="{{ img.alt }}"
+        class="absolute inset-0 w-full h-full object-contain p-6 transition-opacity duration-200"
+        :class="active === {{ loop.index0 }} ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'"
+        style="{% if loop.first %}opacity:1;z-index:10{% else %}opacity:0;z-index:0{% endif %}"
+        {% if loop.first %}loading="eager"{% else %}loading="lazy"{% endif %}
+      >
+      {% endfor %}
+    {% else %}
+      <img
+        src="{{ fallback }}"
+        alt="{{ product.name }}"
+        class="absolute inset-0 w-full h-full object-contain p-6"
+        loading="eager"
+      >
+    {% endif %}
+  </div>
+
+  {% if gallery|length > 1 %}
+  <div class="flex flex-wrap gap-2 mt-3" role="tablist" aria-label="Product images">
+    {% for img in gallery %}
+    <button
+      type="button"
+      role="tab"
+      :aria-selected="active === {{ loop.index0 }}"
+      @click="active = {{ loop.index0 }}"
+      class="w-16 h-16 sm:w-20 sm:h-20 rounded-md border-2 overflow-hidden bg-white transition-all focus:outline-none focus:ring-2 focus:ring-gold/40"
+      :class="active === {{ loop.index0 }} ? 'border-gold shadow-sm' : 'border-gold/20 hover:border-gold/50'"
+    >
+      <img src="{{ img.url }}" alt="{{ img.alt }}" class="w-full h-full object-cover" loading="lazy">
+    </button>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>

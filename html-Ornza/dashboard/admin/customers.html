@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customers · ORNZA Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="../../ornza-stack.js"></script>
+
+  <link rel="stylesheet" href="../dashboard.css">
+</head>
+<body class="portal">
+  <div class="portal-shell">
+    <aside class="portal-sidebar admin-sidebar" id="admin-sidebar" data-page="customers"></aside>
+
+    <div class="portal-sidebar-overlay"></div>
+
+    <main class="portal-main">
+      <header class="portal-topbar">
+        <button class="portal-topbar-toggle" aria-label="Toggle menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <h1 class="portal-topbar-title">Customers</h1>
+        <div class="portal-topbar-spacer"></div>
+        <button class="portal-btn portal-btn-outline portal-btn-sm">Export</button>
+      </header>
+
+      <div class="portal-content">
+        <div class="portal-stat-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:24px;">
+          <div class="portal-stat-card">
+            <div class="portal-stat-label">Total Customers</div>
+            <div class="portal-stat-value">10,412</div>
+            <div class="portal-stat-change up">↑ 312 this week</div>
+          </div>
+          <div class="portal-stat-card">
+            <div class="portal-stat-label">Gold Members</div>
+            <div class="portal-stat-value">1,840</div>
+          </div>
+          <div class="portal-stat-card">
+            <div class="portal-stat-label">Repeat Buyers</div>
+            <div class="portal-stat-value">68%</div>
+          </div>
+          <div class="portal-stat-card">
+            <div class="portal-stat-label">Avg. Lifetime Value</div>
+            <div class="portal-stat-value">₹8.4K</div>
+          </div>
+        </div>
+
+        <div class="portal-page-actions">
+          <div class="portal-search" style="min-width:300px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="search" placeholder="Search by name, email or phone…">
+          </div>
+          <select class="portal-form-select" style="width:auto;padding:8px 12px;font-size:12px;">
+            <option>All Tiers</option>
+            <option>Gold</option>
+            <option>Silver</option>
+            <option>New</option>
+          </select>
+        </div>
+
+        <div class="portal-card">
+          <div class="portal-table-wrap">
+            <table class="portal-table">
+              <thead>
+                <tr>
+                  <th>Customer</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Orders</th>
+                  <th>Total Spent</th>
+                  <th>Tier</th>
+                  <th>Joined</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div style="display:flex;align-items:center;gap:10px;">
+                      <div class="portal-user-avatar" style="width:32px;height:32px;font-size:11px;">PS</div>
+                      <span style="font-weight:500;">Priya Sharma</span>
+                    </div>
+                  </td>
+                  <td>priya.sharma@email.com</td>
+                  <td>+91 98765 43210</td>
+                  <td>12</td>
+                  <td>₹42,890</td>
+                  <td><span class="portal-status active">Gold</span></td>
+                  <td>Jan 2025</td>
+                  <td><button class="portal-btn portal-btn-ghost portal-btn-sm">View</button></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display:flex;align-items:center;gap:10px;">
+                      <div class="portal-user-avatar" style="width:32px;height:32px;font-size:11px;">RP</div>
+                      <span style="font-weight:500;">Riya Patel</span>
+                    </div>
+                  </td>
+                  <td>riya.patel@email.com</td>
+                  <td>+91 98234 56789</td>
+                  <td>5</td>
+                  <td>₹14,200</td>
+                  <td><span class="portal-status processing">Silver</span></td>
+                  <td>Mar 2025</td>
+                  <td><button class="portal-btn portal-btn-ghost portal-btn-sm">View</button></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display:flex;align-items:center;gap:10px;">
+                      <div class="portal-user-avatar" style="width:32px;height:32px;font-size:11px;">AM</div>
+                      <span style="font-weight:500;">Arjun Mehta</span>
+                    </div>
+                  </td>
+                  <td>arjun.mehta@email.com</td>
+                  <td>+91 97654 32109</td>
+                  <td>8</td>
+                  <td>₹22,450</td>
+                  <td><span class="portal-status active">Gold</span></td>
+                  <td>Nov 2024</td>
+                  <td><button class="portal-btn portal-btn-ghost portal-btn-sm">View</button></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display:flex;align-items:center;gap:10px;">
+                      <div class="portal-user-avatar" style="width:32px;height:32px;font-size:11px;">NG</div>
+                      <span style="font-weight:500;">Neha Gupta</span>
+                    </div>
+                  </td>
+                  <td>neha.gupta@email.com</td>
+                  <td>+91 98123 45678</td>
+                  <td>3</td>
+                  <td>₹9,800</td>
+                  <td><span class="portal-status pending">New</span></td>
+                  <td>May 2026</td>
+                  <td><button class="portal-btn portal-btn-ghost portal-btn-sm">View</button></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display:flex;align-items:center;gap:10px;">
+                      <div class="portal-user-avatar" style="width:32px;height:32px;font-size:11px;">KS</div>
+                      <span style="font-weight:500;">Karan Shah</span>
+                    </div>
+                  </td>
+                  <td>karan.shah@email.com</td>
+                  <td>+91 99012 34567</td>
+                  <td>15</td>
+                  <td>₹58,200</td>
+                  <td><span class="portal-status active">Gold</span></td>
+                  <td>Aug 2024</td>
+                  <td><button class="portal-btn portal-btn-ghost portal-btn-sm">View</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="portal-pagination">
+            <button class="portal-page-btn">←</button>
+            <button class="portal-page-btn active">1</button>
+            <button class="portal-page-btn">2</button>
+            <button class="portal-page-btn">3</button>
+            <button class="portal-page-btn">→</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="admin-nav.js"></script>
+    <script src="../../portal-enhance.js"></script>
+<script src="../dashboard.js"></script>
+  <script src="../../ornza-enhance.js"></script>
+</body>
+</html>

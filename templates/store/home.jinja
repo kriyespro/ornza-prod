@@ -1,0 +1,381 @@
+{% extends "base.jinja" %}
+{% from "components/product_card.jinja" import product_card %}
+
+{% block title %}ORNZA · Artificial Jewellery Surat | Gold, 925 Silver, Premium Gift Hampers India{% endblock %}
+{% block body_class %}has-site-header has-hero{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="hero-v2" id="home">
+  <div class="hero-v2-left">
+    <div class="hero-eyebrow">Est. 2025 · Surat, India</div>
+    <h1 class="hero-v2-h1">
+      Where Gold<br>Meets <em>Brilliance</em>
+    </h1>
+    <p class="hero-v2-p">Handcrafted artificial jewellery that captures the essence of luxury — without compromise. Discover our curated collections for every occasion.</p>
+    <div class="hero-v2-btns">
+      <a href="{{ url('store:collections') }}" class="btn-hero-primary">
+        Shop Jewellery
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="{{ url('store:category', slug='hampers') }}" class="btn-hero-secondary">
+        Explore Gifts
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12v10H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">10K+</div>
+        <div class="hero-stat-label">Happy Customers</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">500+</div>
+        <div class="hero-stat-label">Unique Designs</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">4.9</div>
+        <div class="hero-stat-label">Average Rating</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-v2-right">
+    <img src="{{ static('images/hero_brand.png') }}" alt="ORNZA Fine Jewellery Collection" loading="eager" onerror="this.style.display='none'">
+  </div>
+</section>
+
+<!-- STICKY CATEGORY NAV -->
+<div class="cat-nav-sticky" id="cat-nav">
+  <div class="cat-nav-inner">
+    <a href="#new-arrivals" class="cat-nav-item">New Arrivals <span class="cn-badge">Hot</span></a>
+    <a href="#best-sellers" class="cat-nav-item">Best Sellers <span class="cn-badge gold">Top</span></a>
+    <a href="{{ url('store:category', slug='earrings') }}" class="cat-nav-item">Earrings</a>
+    <a href="{{ url('store:category', slug='rings') }}" class="cat-nav-item">Rings</a>
+    <a href="{{ url('store:category', slug='chains') }}" class="cat-nav-item">Necklace Sets</a>
+    <a href="{{ url('store:category', slug='bracelets') }}" class="cat-nav-item">Bracelets</a>
+    <a href="{{ url('store:category', slug='mangalsutras') }}" class="cat-nav-item">Mangalsutras</a>
+    <a href="{{ url('store:category', slug='silver-925') }}" class="cat-nav-item">925 Silver</a>
+    <a href="{{ url('store:category', slug='hampers') }}" class="cat-nav-item">Hampers <span class="cn-badge">Gift</span></a>
+  </div>
+</div>
+
+<!-- TRUST BADGES -->
+<div class="trust-strip-v2">
+  <div class="trust-strip-v2-inner">
+    <div class="trust-badge">
+      <div class="trust-badge-icon">🔒</div>
+      <div>
+        <div class="trust-badge-title">Secure Payments</div>
+        <div class="trust-badge-sub">UPI, Cards & Net Banking</div>
+      </div>
+    </div>
+    <div class="trust-badge">
+      <div class="trust-badge-icon">↩</div>
+      <div>
+        <div class="trust-badge-title">Easy Returns</div>
+        <div class="trust-badge-sub">7-day hassle-free returns</div>
+      </div>
+    </div>
+    <div class="trust-badge">
+      <div class="trust-badge-icon">💵</div>
+      <div>
+        <div class="trust-badge-title">COD Available</div>
+        <div class="trust-badge-sub">Pay when you receive</div>
+      </div>
+    </div>
+    <div class="trust-badge">
+      <div class="trust-badge-icon">🎁</div>
+      <div>
+        <div class="trust-badge-title">Premium Packaging</div>
+        <div class="trust-badge-sub">Gift-ready on every order</div>
+      </div>
+    </div>
+    <div class="trust-badge">
+      <div class="trust-badge-icon">⭐</div>
+      <div>
+        <div class="trust-badge-title">10,000+ Customers</div>
+        <div class="trust-badge-sub">Trusted across India</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SHOP BY CATEGORY -->
+<section class="sec" id="categories">
+  <div class="sec-head">
+    <div class="sec-eyebrow">Browse Collections</div>
+    <h2 class="sec-title">Shop By Category</h2>
+    <p class="sec-sub">Every piece tells a story. Find yours across our beautifully curated jewellery categories.</p>
+  </div>
+  <div class="cat-grid-v2">
+    <a href="{{ url('store:category', slug='earrings') }}" class="cat-card-v2">
+      <img class="cat-card-v2-bg" src="{{ static('images/earrings.png') }}" alt="Earrings" loading="lazy">
+      <div class="cat-card-v2-overlay"></div>
+      <div class="cat-card-v2-info">
+        <div class="cat-card-v2-name">Earrings</div>
+        <div class="cat-card-v2-count">Studs · Hoops · Drops</div>
+      </div>
+    </a>
+    <a href="{{ url('store:category', slug='chains') }}" class="cat-card-v2">
+      <img class="cat-card-v2-bg" src="{{ static('images/necklaces.png') }}" alt="Necklace Sets" loading="lazy">
+      <div class="cat-card-v2-overlay"></div>
+      <div class="cat-card-v2-info">
+        <div class="cat-card-v2-name">Necklace Sets</div>
+        <div class="cat-card-v2-count">Chain · Pendant · Sets</div>
+      </div>
+    </a>
+    <a href="{{ url('store:category', slug='rings') }}" class="cat-card-v2">
+      <img class="cat-card-v2-bg" src="{{ static('images/rings.png') }}" alt="Rings" loading="lazy">
+      <div class="cat-card-v2-overlay"></div>
+      <div class="cat-card-v2-info">
+        <div class="cat-card-v2-name">Rings</div>
+        <div class="cat-card-v2-count">Solitaire · Bands · Stackable</div>
+      </div>
+    </a>
+    <a href="{{ url('store:category', slug='bracelets') }}" class="cat-card-v2">
+      <img class="cat-card-v2-bg" src="{{ static('images/bracelets.png') }}" alt="Bracelets" loading="lazy">
+      <div class="cat-card-v2-overlay"></div>
+      <div class="cat-card-v2-info">
+        <div class="cat-card-v2-name">Bracelets</div>
+        <div class="cat-card-v2-count">Tennis · Charm · Link</div>
+      </div>
+    </a>
+    <a href="{{ url('store:category', slug='bangles') }}" class="cat-card-v2">
+      <img class="cat-card-v2-bg" src="{{ static('images/bangles.png') }}" alt="Bangles" loading="lazy">
+      <div class="cat-card-v2-overlay"></div>
+      <div class="cat-card-v2-info">
+        <div class="cat-card-v2-name">Bangles</div>
+        <div class="cat-card-v2-count">Kada · Bangle · Payal</div>
+      </div>
+    </a>
+    <a href="{{ url('store:category', slug='hampers') }}" class="cat-card-v2">
+      <img class="cat-card-v2-bg" src="{{ static('images/hampers.png') }}" alt="Gift Hampers" loading="lazy">
+      <div class="cat-card-v2-overlay"></div>
+      <div class="cat-card-v2-info">
+        <div class="cat-card-v2-name">Gift Hampers</div>
+        <div class="cat-card-v2-count">Curated Luxury Sets</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- NEW ARRIVALS -->
+<section class="sec sec-alt" id="new-arrivals">
+  <div class="sec-head">
+    <div class="sec-eyebrow">Just Landed</div>
+    <h2 class="sec-title">New Arrivals</h2>
+    <p class="sec-sub">Our freshest designs, crafted for the season. Be the first to wear what everyone will be talking about.</p>
+  </div>
+  <div class="product-grid-v2">
+    {% if featured %}
+      {% for product in featured %}
+        {{ product_card(product, badge='New') }}
+      {% endfor %}
+    {% else %}
+      <!-- Placeholder cards when no products in DB yet -->
+      <div class="prod-card-v2">
+        <div class="prod-card-img-wrap">
+          <img src="{{ static('images/earrings.png') }}" alt="Sample Earrings" loading="lazy">
+          <span class="prod-badge-new">New</span>
+        </div>
+        <div class="prod-info-v2">
+          <div class="prod-cat-v2">Women · Earrings</div>
+          <div class="prod-name-v2">Aurora Drop Earrings</div>
+          <div class="prod-card-footer">
+            <div class="prod-price-block">
+              <div class="prod-price-line"><span class="prod-price-now">₹1,799</span></div>
+              <div class="prod-price-meta"><span class="prod-price-was">₹2,499</span><span class="prod-price-save">28% off</span></div>
+            </div>
+            <a href="{{ url('store:collections') }}" class="prod-add-cart">View</a>
+          </div>
+        </div>
+      </div>
+      <div class="prod-card-v2">
+        <div class="prod-card-img-wrap">
+          <img src="{{ static('images/necklaces.png') }}" alt="Sample Necklace" loading="lazy">
+          <span class="prod-badge-new">New</span>
+        </div>
+        <div class="prod-info-v2">
+          <div class="prod-cat-v2">Women · Necklace Sets</div>
+          <div class="prod-name-v2">Pearl Pendant Set</div>
+          <div class="prod-card-footer">
+            <div class="prod-price-block">
+              <div class="prod-price-line"><span class="prod-price-now">₹2,999</span></div>
+              <div class="prod-price-meta"><span class="prod-price-was">₹3,799</span></div>
+            </div>
+            <a href="{{ url('store:collections') }}" class="prod-add-cart">View</a>
+          </div>
+        </div>
+      </div>
+      <div class="prod-card-v2">
+        <div class="prod-card-img-wrap">
+          <img src="{{ static('images/rings.png') }}" alt="Sample Ring" loading="lazy">
+          <span class="prod-badge-discount">-35% OFF</span>
+        </div>
+        <div class="prod-info-v2">
+          <div class="prod-cat-v2">Women · Rings</div>
+          <div class="prod-name-v2">Celestine Solitaire Ring</div>
+          <div class="prod-card-footer">
+            <div class="prod-price-block">
+              <div class="prod-price-line"><span class="prod-price-now">₹1,599</span></div>
+              <div class="prod-price-meta"><span class="prod-price-was">₹2,499</span></div>
+            </div>
+            <a href="{{ url('store:collections') }}" class="prod-add-cart">View</a>
+          </div>
+        </div>
+      </div>
+      <div class="prod-card-v2">
+        <div class="prod-card-img-wrap">
+          <img src="{{ static('images/bracelets.png') }}" alt="Sample Bracelet" loading="lazy">
+          <span class="prod-badge-new">New</span>
+        </div>
+        <div class="prod-info-v2">
+          <div class="prod-cat-v2">Women · Bracelets</div>
+          <div class="prod-name-v2">CZ Tennis Bracelet</div>
+          <div class="prod-card-footer">
+            <div class="prod-price-block">
+              <div class="prod-price-line"><span class="prod-price-now">₹1,799</span></div>
+              <div class="prod-price-meta"><span class="prod-price-was">₹2,299</span></div>
+            </div>
+            <a href="{{ url('store:collections') }}" class="prod-add-cart">View</a>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+  <div class="text-center mt-10">
+    <a href="{{ url('store:collections') }}" class="inline-flex items-center gap-2.5 text-[10px] tracking-[0.2em] uppercase text-espresso border border-gold/40 px-8 py-3.5 rounded-sm no-underline font-medium transition-all hover:bg-espresso hover:text-gold">
+      View All Collections →
+    </a>
+  </div>
+</section>
+
+<!-- BEST SELLERS -->
+<section class="sec" id="best-sellers">
+  <div class="sec-head">
+    <div class="sec-eyebrow">Customer Favourites</div>
+    <h2 class="sec-title">Best Sellers</h2>
+    <p class="sec-sub">The pieces our customers can't stop ordering. Tried, loved, and gifted across India.</p>
+  </div>
+  <div class="product-grid-v2">
+    {% if bestsellers %}
+      {% for product in bestsellers %}
+        {{ product_card(product) }}
+      {% endfor %}
+    {% else %}
+      <div class="prod-card-v2">
+        <div class="prod-card-img-wrap">
+          <img src="{{ static('images/necklaces.png') }}" alt="Mangalsutra" loading="lazy">
+          <span class="prod-badge-discount">Hot</span>
+        </div>
+        <div class="prod-info-v2">
+          <div class="prod-cat-v2">Women · Mangalsutras</div>
+          <div class="prod-name-v2">Diamond Cut Mangalsutra</div>
+          <div class="prod-card-footer">
+            <div class="prod-price-block">
+              <div class="prod-price-line"><span class="prod-price-now">₹2,499</span></div>
+              <div class="prod-price-meta"><span class="prod-price-was">₹3,200</span></div>
+            </div>
+            <a href="{{ url('store:collections') }}" class="prod-add-cart">View</a>
+          </div>
+        </div>
+      </div>
+      <div class="prod-card-v2">
+        <div class="prod-card-img-wrap">
+          <img src="{{ static('images/bracelets.png') }}" alt="Cuban Bracelet" loading="lazy">
+          <span class="prod-badge-discount">Hot</span>
+        </div>
+        <div class="prod-info-v2">
+          <div class="prod-cat-v2">Men · Bracelets</div>
+          <div class="prod-name-v2">Cuban Link Bracelet</div>
+          <div class="prod-card-footer">
+            <div class="prod-price-block">
+              <div class="prod-price-line"><span class="prod-price-now">₹2,499</span></div>
+              <div class="prod-price-meta"><span class="prod-price-was">₹3,499</span></div>
+            </div>
+            <a href="{{ url('store:collections') }}" class="prod-add-cart">View</a>
+          </div>
+        </div>
+      </div>
+      <div class="prod-card-v2">
+        <div class="prod-card-img-wrap">
+          <img src="{{ static('images/earrings.png') }}" alt="Hoop Set" loading="lazy">
+          <span class="prod-badge-discount">-30%</span>
+        </div>
+        <div class="prod-info-v2">
+          <div class="prod-cat-v2">Women · Earrings</div>
+          <div class="prod-name-v2">Celestial Hoop Set</div>
+          <div class="prod-card-footer">
+            <div class="prod-price-block">
+              <div class="prod-price-line"><span class="prod-price-now">₹1,299</span></div>
+              <div class="prod-price-meta"><span class="prod-price-was">₹1,849</span></div>
+            </div>
+            <a href="{{ url('store:collections') }}" class="prod-add-cart">View</a>
+          </div>
+        </div>
+      </div>
+      <div class="prod-card-v2">
+        <div class="prod-card-img-wrap">
+          <img src="{{ static('images/ring_preview.png') }}" alt="925 Silver Ring" loading="lazy">
+          <span class="prod-badge-new">925</span>
+        </div>
+        <div class="prod-info-v2">
+          <div class="prod-cat-v2">925 Silver · Rings</div>
+          <div class="prod-name-v2">Vesper Chevron Ring</div>
+          <div class="prod-card-footer">
+            <div class="prod-price-block">
+              <div class="prod-price-line"><span class="prod-price-now">₹3,499</span></div>
+            </div>
+            <a href="{{ url('store:collections') }}" class="prod-add-cart">View</a>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<!-- WHY ORNZA -->
+<section class="sec" style="background: #1A1507; color: #FAF7F0;">
+  <div class="sec-head" style="color: #FAF7F0;">
+    <div class="sec-eyebrow" style="color: #C9A84C;">Our Promise</div>
+    <h2 class="sec-title" style="color: #FAF7F0;">Why Choose ORNZA?</h2>
+    <p class="sec-sub" style="color: rgba(232,213,160,0.7);">Every piece we craft is a promise — of quality, beauty, and lasting brilliance.</p>
+  </div>
+  <div class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-[5%]">
+    <div class="text-center">
+      <div class="text-4xl mb-4">✦</div>
+      <h3 class="font-display text-lg text-gold mb-2">Hallmarked Quality</h3>
+      <p class="text-xs text-champagne/70 leading-relaxed">BIS hallmarked 925 silver and certified gold vermeil — quality you can trust.</p>
+    </div>
+    <div class="text-center">
+      <div class="text-4xl mb-4">🎁</div>
+      <h3 class="font-display text-lg text-gold mb-2">Gift-Ready Packaging</h3>
+      <p class="text-xs text-champagne/70 leading-relaxed">Every order arrives in our signature luxury box, ready to gift.</p>
+    </div>
+    <div class="text-center">
+      <div class="text-4xl mb-4">🚚</div>
+      <h3 class="font-display text-lg text-gold mb-2">Free Shipping ₹999+</h3>
+      <p class="text-xs text-champagne/70 leading-relaxed">Free pan-India shipping on orders above ₹999. COD available everywhere.</p>
+    </div>
+    <div class="text-center">
+      <div class="text-4xl mb-4">↩</div>
+      <h3 class="font-display text-lg text-gold mb-2">Easy 7-Day Returns</h3>
+      <p class="text-xs text-champagne/70 leading-relaxed">Not happy? Return within 7 days — no questions asked.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<section class="sec text-center" style="background: linear-gradient(135deg, #C9A84C 0%, #E8D5A0 50%, #C9A84C 100%);">
+  <div class="max-w-2xl mx-auto px-[5%]">
+    <div class="text-[9px] tracking-[0.35em] uppercase text-espresso font-semibold mb-3">Limited Time</div>
+    <h2 class="font-display text-3xl md:text-4xl text-espresso font-light mb-4">Shop the Season's <em>Finest Pieces</em></h2>
+    <p class="text-sm text-espresso/75 mb-8">New arrivals every week. Free shipping above ₹999. COD across India.</p>
+    <a href="{{ url('store:collections') }}" class="inline-flex items-center gap-3 bg-espresso text-gold text-[10px] font-bold tracking-[0.2em] uppercase px-8 py-4 rounded-sm no-underline transition-all hover:bg-[#1A1507]">
+      Browse All Jewellery
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</section>
+
+{% endblock %}

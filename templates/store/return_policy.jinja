@@ -1,0 +1,33 @@
+{% extends "base.jinja" %}
+{% block title %}Return Policy · ORNZA{% endblock %}
+{% block body_class %}has-site-header nav-solid{% endblock %}
+{% block content %}
+<div class="page">
+  <div class="page-header">
+    <div class="badge">Customer Care</div>
+    <h1 class="page-title">Return Policy</h1>
+    <p class="page-desc">Hassle-free returns within 7 days. Your satisfaction is our priority.</p>
+  </div>
+  <div class="contact-section" style="max-width:760px;margin:0 auto 80px;">
+    <div class="contact-info-panel" style="padding:32px;">
+      <h2 class="contact-block-title">7-Day Easy Returns</h2>
+      <p class="showroom-detail" style="line-height:1.8;margin-bottom:20px;">If you are not satisfied with your purchase, you can return it within 7 days of delivery for a full refund or exchange. Items must be unused, in original packaging, with all tags intact.</p>
+      <h2 class="contact-block-title">How to Return</h2>
+      <ul style="list-style:disc;padding-left:20px;color:var(--color-text-muted);line-height:1.9;font-size:14px;margin-bottom:20px;">
+        <li>WhatsApp us at +91 99999 99999 with your order number and reason</li>
+        <li>We'll arrange a free pickup from your address</li>
+        <li>Refund processed within 5–7 business days after we receive the item</li>
+      </ul>
+      <h2 class="contact-block-title">Non-Returnable Items</h2>
+      <ul style="list-style:disc;padding-left:20px;color:var(--color-text-muted);line-height:1.9;font-size:14px;margin-bottom:20px;">
+        <li>Customized or engraved jewellery</li>
+        <li>Items damaged due to misuse or improper care</li>
+        <li>Sale items marked as final sale</li>
+      </ul>
+      <div style="margin-top:24px;">
+        <a href="{{ url('store:contact') }}" class="form-submit-btn" style="display:inline-block;text-align:center;">Contact Support</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

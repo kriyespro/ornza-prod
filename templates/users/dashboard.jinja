@@ -1,0 +1,74 @@
+{% extends "base.jinja" %}
+
+{% block title %}My Account · ORNZA{% endblock %}
+{% block body_class %}has-site-header nav-solid{% endblock %}
+
+{% block content %}
+<main class="pt-28 pb-16 px-4 md:px-8 max-w-5xl mx-auto">
+  <div class="mb-8">
+    <div class="text-[9px] tracking-[0.3em] uppercase text-gold mb-1">Welcome back</div>
+    <h1 class="font-display text-3xl text-espresso font-light">{{ user.get_full_name() or user.username }}</h1>
+  </div>
+
+  <!-- Quick Nav -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+    <a href="{{ url('users:orders') }}" class="bg-white border border-gold/15 rounded-lg p-5 text-center no-underline group hover:border-gold transition-colors">
+      <div class="text-2xl mb-2">📦</div>
+      <div class="text-[10px] tracking-[0.15em] uppercase text-espresso font-semibold">My Orders</div>
+    </a>
+    <a href="{{ url('users:wishlist') }}" class="bg-white border border-gold/15 rounded-lg p-5 text-center no-underline group hover:border-gold transition-colors">
+      <div class="text-2xl mb-2">♡</div>
+      <div class="text-[10px] tracking-[0.15em] uppercase text-espresso font-semibold">Wishlist ({{ wishlist_count }})</div>
+    </a>
+    <a href="{{ url('users:addresses') }}" class="bg-white border border-gold/15 rounded-lg p-5 text-center no-underline group hover:border-gold transition-colors">
+      <div class="text-2xl mb-2">📍</div>
+      <div class="text-[10px] tracking-[0.15em] uppercase text-espresso font-semibold">Addresses</div>
+    </a>
+    <a href="{{ url('users:profile') }}" class="bg-white border border-gold/15 rounded-lg p-5 text-center no-underline group hover:border-gold transition-colors">
+      <div class="text-2xl mb-2">👤</div>
+      <div class="text-[10px] tracking-[0.15em] uppercase text-espresso font-semibold">Profile</div>
+    </a>
+  </div>
+
+  <!-- Recent Orders -->
+  <div class="bg-white border border-gold/15 rounded-lg p-6">
+    <h2 class="font-display text-xl text-espresso mb-5">Recent Orders</h2>
+    {% if recent_orders %}
+    <table class="w-full text-sm">
+      <thead>
+        <tr class="border-b border-gold/15 text-[9px] tracking-[0.2em] uppercase text-taupe">
+          <th class="text-left pb-3">Order #</th>
+          <th class="text-left pb-3">Date</th>
+          <th class="text-left pb-3">Status</th>
+          <th class="text-right pb-3">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in recent_orders %}
+        <tr class="border-b border-gold/10 hover:bg-ivory-alt transition-colors">
+          <td class="py-3"><a href="{{ url('orders:detail', order_number=order.order_number) }}" class="text-gold-deep no-underline hover:underline font-medium">{{ order.order_number }}</a></td>
+          <td class="py-3 text-taupe">{{ order.created_at.strftime('%d %b %Y') }}</td>
+          <td class="py-3"><span class="text-[9px] tracking-[0.1em] uppercase px-2 py-1 rounded bg-gold/10 text-espresso">{{ order.status }}</span></td>
+          <td class="py-3 text-right font-medium">₹{{ "{:,.0f}".format(order.total) }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <a href="{{ url('users:orders') }}" class="inline-block mt-4 text-[10px] tracking-[0.15em] uppercase text-gold-deep no-underline hover:underline">View All Orders →</a>
+    {% else %}
+    <div class="text-center py-10 text-taupe text-sm">
+      No orders yet.
+      <a href="{{ url('store:collections') }}" class="text-gold-deep no-underline hover:underline">Start shopping</a>
+    </div>
+    {% endif %}
+  </div>
+
+  <!-- Logout -->
+  <div class="mt-6 text-right">
+    <form method="post" action="{{ url('users:logout') }}" style="display:inline;">
+      {{ csrf_input }}
+      <button type="submit" class="text-xs text-taupe hover:text-red-600 transition-colors bg-transparent border-0 cursor-pointer underline">Sign Out</button>
+    </form>
+  </div>
+</main>
+{% endblock %}

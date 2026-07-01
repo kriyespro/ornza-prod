@@ -1,0 +1,1 @@
+create a full mobile responsive ecommerce webiste use html templets form html-Ornza folder - convert it into jinja2 che

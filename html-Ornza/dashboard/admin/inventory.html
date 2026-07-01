@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory · ORNZA Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="../../ornza-stack.js"></script>
+
+  <link rel="stylesheet" href="../dashboard.css">
+</head>
+<body class="portal">
+  <div class="portal-shell">
+    <aside class="portal-sidebar admin-sidebar" id="admin-sidebar" data-page="inventory"></aside>
+    <div class="portal-sidebar-overlay"></div>
+    <main class="portal-main">
+      <header class="portal-topbar">
+        <button class="portal-topbar-toggle" aria-label="Toggle menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+        <h1 class="portal-topbar-title">Inventory</h1>
+        <div class="portal-topbar-spacer"></div>
+        <button class="portal-btn portal-btn-outline portal-btn-sm">Export Stock Report</button>
+      </header>
+      <div class="portal-content">
+        <div class="portal-stat-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:24px;">
+          <div class="portal-stat-card"><div class="portal-stat-label">Total Units</div><div class="portal-stat-value">4,820</div></div>
+          <div class="portal-stat-card"><div class="portal-stat-label">Low Stock (&lt;10)</div><div class="portal-stat-value" style="color:#A63D2F;">12</div></div>
+          <div class="portal-stat-card"><div class="portal-stat-label">Out of Stock</div><div class="portal-stat-value" style="color:#A63D2F;">3</div></div>
+          <div class="portal-stat-card"><div class="portal-stat-label">Restock Needed</div><div class="portal-stat-value">15</div></div>
+        </div>
+        <div class="portal-card" style="margin-bottom:24px;border-color:rgba(196,92,74,0.3);">
+          <div class="portal-card-header">
+            <h2 class="portal-card-title" style="color:#A63D2F;">⚠ Low Stock Alerts</h2>
+          </div>
+          <div class="portal-table-wrap">
+            <table class="portal-table">
+              <thead><tr><th>Product</th><th>SKU</th><th>Current Stock</th><th>Reorder Level</th><th>Action</th></tr></thead>
+              <tbody>
+                <tr><td><div class="portal-table-product"><img src="../../images/rings.png" alt=""><span>Celestine Solitaire Ring</span></div></td><td>ORN-RNG-008</td><td style="color:#A63D2F;font-weight:600;">6</td><td>15</td><td><button class="portal-btn portal-btn-primary portal-btn-sm">Restock</button></td></tr>
+                <tr><td><div class="portal-table-product"><img src="../../images/necklaces.png" alt=""><span>Classic Black Bead Mangalsutra</span></div></td><td>ORN-MNG-002</td><td style="color:#A63D2F;font-weight:600;">8</td><td>20</td><td><button class="portal-btn portal-btn-primary portal-btn-sm">Restock</button></td></tr>
+                <tr><td><div class="portal-table-product"><img src="../../images/bangles.png" alt=""><span>Gold Kada Bangle</span></div></td><td>ORN-BNG-003</td><td style="color:#A63D2F;font-weight:600;">0</td><td>10</td><td><button class="portal-btn portal-btn-primary portal-btn-sm">Restock</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="portal-card">
+          <div class="portal-card-header"><h2 class="portal-card-title">Stock by Category</h2></div>
+          <div class="portal-table-wrap">
+            <table class="portal-table">
+              <thead><tr><th>Category</th><th>Products</th><th>Total Units</th><th>Value (₹)</th><th>Health</th></tr></thead>
+              <tbody>
+                <tr><td>Earrings</td><td>48</td><td>1,240</td><td>₹18.4L</td><td><span class="portal-status active">Healthy</span></td></tr>
+                <tr><td>Necklaces</td><td>42</td><td>980</td><td>₹24.1L</td><td><span class="portal-status active">Healthy</span></td></tr>
+                <tr><td>Rings</td><td>36</td><td>720</td><td>₹9.8L</td><td><span class="portal-status pending">Low</span></td></tr>
+                <tr><td>Bracelets</td><td>28</td><td>640</td><td>₹8.2L</td><td><span class="portal-status active">Healthy</span></td></tr>
+                <tr><td>Hampers</td><td>7</td><td>115</td><td>₹4.6L</td><td><span class="portal-status active">Healthy</span></td></tr>
+                <tr><td>Bangles</td><td>18</td><td>180</td><td>₹3.9L</td><td><span class="portal-status cancelled">Critical</span></td></tr>
+                <tr><td>925 Silver</td><td>16</td><td>420</td><td>₹3.2L</td><td><span class="portal-status active">Healthy</span></td></tr>
+                <tr><td>Men's</td><td>24</td><td>525</td><td>₹11.4L</td><td><span class="portal-status active">Healthy</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="admin-nav.js"></script>
+    <script src="../../portal-enhance.js"></script>
+<script src="../dashboard.js"></script>
+  <script src="../../ornza-enhance.js"></script>
+</body>
+</html>

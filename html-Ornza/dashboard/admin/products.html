@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products · ORNZA Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="../../ornza-stack.js"></script>
+
+  <link rel="stylesheet" href="../dashboard.css">
+</head>
+<body class="portal">
+  <div class="portal-shell">
+    <aside class="portal-sidebar admin-sidebar" id="admin-sidebar" data-page="products"></aside>
+
+    <div class="portal-sidebar-overlay"></div>
+
+    <main class="portal-main">
+      <header class="portal-topbar">
+        <button class="portal-topbar-toggle" aria-label="Toggle menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <h1 class="portal-topbar-title">Products</h1>
+        <div class="portal-topbar-spacer"></div>
+        <a href="product-add.html" class="portal-btn portal-btn-primary portal-btn-sm">+ Add Product</a>
+      </header>
+
+      <div class="portal-content">
+        <div class="portal-page-actions">
+          <div class="portal-search" style="min-width:280px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="search" placeholder="Search products…">
+          </div>
+          <div style="display:flex;gap:10px;">
+            <select class="portal-form-select" style="width:auto;padding:8px 12px;font-size:12px;">
+              <option>All Categories</option>
+              <option>Earrings</option>
+              <option>Necklaces</option>
+              <option>Rings</option>
+              <option>Bracelets</option>
+              <option>Mangalsutras</option>
+              <option>Bangles</option>
+              <option>Men's</option>
+              <option>925 Silver</option>
+              <option>Hampers</option>
+            </select>
+            <select class="portal-form-select" style="width:auto;padding:8px 12px;font-size:12px;">
+              <option>All Status</option>
+              <option>Active</option>
+              <option>Draft</option>
+              <option>Out of Stock</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="portal-stat-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:24px;">
+          <div class="portal-stat-card">
+            <div class="portal-stat-label">Total Products</div>
+            <div class="portal-stat-value">248</div>
+          </div>
+          <div class="portal-stat-card">
+            <div class="portal-stat-label">Active</div>
+            <div class="portal-stat-value">231</div>
+          </div>
+          <div class="portal-stat-card">
+            <div class="portal-stat-label">Categories</div>
+            <div class="portal-stat-value">12</div>
+          </div>
+          <div class="portal-stat-card">
+            <div class="portal-stat-label">Low Stock</div>
+            <div class="portal-stat-value" style="color:#A63D2F;">12</div>
+          </div>
+        </div>
+
+        <div class="portal-card">
+          <div class="portal-table-wrap">
+            <table class="portal-table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>SKU</th>
+                  <th>Category</th>
+                  <th>Price</th>
+                  <th>Stock</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-products-tbody">
+              </tbody>
+            </table>
+          </div>
+          <div class="portal-pagination">
+            <button class="portal-page-btn">←</button>
+            <button class="portal-page-btn active">1</button>
+            <button class="portal-page-btn">2</button>
+            <button class="portal-page-btn">3</button>
+            <button class="portal-page-btn">…</button>
+            <button class="portal-page-btn">21</button>
+            <button class="portal-page-btn">→</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="admin-nav.js"></script>
+  <script src="admin-products.js"></script>
+    <script src="../../portal-enhance.js"></script>
+<script src="../dashboard.js"></script>
+  <script src="../../ornza-enhance.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Mission Control{% endblock %} · ORNZA Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { theme: { extend: { colors: { gold: '#C9A84C', espresso: '#3A2E18' } } } }</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://unpkg.com/htmx.org@2.0.0/dist/htmx.min.js"></script>
+</head>
+<body class="bg-gray-50 font-sans text-sm" x-data="{ sidebarOpen: true }">
+
+<div class="flex h-screen overflow-hidden">
+  <!-- Sidebar -->
+  <aside class="w-64 bg-gray-900 text-white flex flex-col flex-shrink-0 transition-all duration-300" :class="sidebarOpen ? 'w-64' : 'w-16'">
+    <div class="flex items-center justify-between h-16 px-4 border-b border-white/10">
+      <span class="font-serif text-lg tracking-wider text-gold" x-show="sidebarOpen">ORN<em class="italic">Z</em>A</span>
+      <button @click="sidebarOpen = !sidebarOpen" class="text-gray-400 hover:text-white">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <nav class="flex-1 px-2 py-4 space-y-1 overflow-y-auto">
+      {% set nav_items = [
+        ('control:dashboard', '📊', 'Dashboard'),
+        ('control:users', '👥', 'Users'),
+        ('control:products', '💎', 'Products'),
+        ('control:orders', '📦', 'Orders'),
+        ('control:analytics', '📈', 'Analytics'),
+      ] %}
+      {% for url_name, icon, label in nav_items %}
+      <a href="{{ url(url_name) }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:text-white hover:bg-white/10 transition-colors no-underline">
+        <span class="text-lg flex-shrink-0">{{ icon }}</span>
+        <span x-show="sidebarOpen" class="text-xs tracking-wide">{{ label }}</span>
+      </a>
+      {% endfor %}
+    </nav>
+    <div class="p-4 border-t border-white/10">
+      <div class="flex items-center gap-3 text-xs text-gray-500" x-show="sidebarOpen">
+        <div class="w-7 h-7 rounded-full bg-gold flex items-center justify-center text-espresso font-bold text-[10px]">
+          {{ request.user.username[0]|upper }}
+        </div>
+        <div>
+          <div class="text-white font-medium">{{ request.user.username }}</div>
+          <div>Staff</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div class="flex-1 flex flex-col overflow-hidden">
+    <!-- Topbar -->
+    <header class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6 flex-shrink-0">
+      <h1 class="text-base font-semibold text-gray-800">{% block page_title %}Dashboard{% endblock %}</h1>
+      <div class="flex items-center gap-4">
+        <a href="{{ url('store:home') }}" class="text-xs text-gray-500 hover:text-gray-800 no-underline" target="_blank">View Store →</a>
+        <form method="post" action="{{ url('users:logout') }}" style="display:inline;">
+          {{ csrf_input }}
+          <button type="submit" class="text-xs text-gray-500 hover:text-red-600 bg-transparent border-0 cursor-pointer">Sign Out</button>
+        </form>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main class="flex-1 overflow-y-auto p-6">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+</div>
+
+{% block extra_scripts %}{% endblock %}
+</body>
+</html>

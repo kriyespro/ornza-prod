@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orders · ORNZA Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="../../ornza-stack.js"></script>
+
+  <link rel="stylesheet" href="../dashboard.css">
+</head>
+<body class="portal">
+  <div class="portal-shell">
+    <aside class="portal-sidebar admin-sidebar" id="admin-sidebar" data-page="orders"></aside>
+
+    <div class="portal-sidebar-overlay"></div>
+
+    <main class="portal-main">
+      <header class="portal-topbar">
+        <button class="portal-topbar-toggle" aria-label="Toggle menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <h1 class="portal-topbar-title">Orders</h1>
+        <div class="portal-topbar-spacer"></div>
+        <button class="portal-btn portal-btn-outline portal-btn-sm">Export CSV</button>
+      </header>
+
+      <div class="portal-content">
+        <div class="portal-stat-grid" style="grid-template-columns:repeat(3,1fr);margin-bottom:24px;">
+          <div class="portal-stat-card" style="padding:16px 18px;">
+            <div class="portal-stat-label">Pending</div>
+            <div class="portal-stat-value" style="font-size:22px;">18</div>
+          </div>
+          <div class="portal-stat-card" style="padding:16px 18px;">
+            <div class="portal-stat-label">Processing</div>
+            <div class="portal-stat-value" style="font-size:22px;">34</div>
+          </div>
+          <div class="portal-stat-card" style="padding:16px 18px;">
+            <div class="portal-stat-label">Shipped</div>
+            <div class="portal-stat-value" style="font-size:22px;">52</div>
+          </div>
+          <div class="portal-stat-card" style="padding:16px 18px;">
+            <div class="portal-stat-label">Delivered</div>
+            <div class="portal-stat-value" style="font-size:22px;">1,842</div>
+          </div>
+          <div class="portal-stat-card" style="padding:16px 18px;">
+            <div class="portal-stat-label">Cancelled</div>
+            <div class="portal-stat-value" style="font-size:22px;color:#A63D2F;">28</div>
+          </div>
+          <div class="portal-stat-card" style="padding:16px 18px;">
+            <div class="portal-stat-label">COD Pending</div>
+            <div class="portal-stat-value" style="font-size:22px;">6</div>
+          </div>
+        </div>
+
+        <div class="portal-page-actions">
+          <div class="portal-search" style="min-width:280px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="search" placeholder="Search by order ID or customer…">
+          </div>
+          <select class="portal-form-select" style="width:auto;padding:8px 12px;font-size:12px;">
+            <option>All Order Status</option>
+            <option>Pending</option>
+            <option>Processing</option>
+            <option>Shipped</option>
+            <option>Delivered</option>
+            <option>Cancelled</option>
+          </select>
+          <select class="portal-form-select" style="width:auto;padding:8px 12px;font-size:12px;">
+            <option>All Payments</option>
+            <option>Paid</option>
+            <option>COD Pending</option>
+            <option>Payment Pending</option>
+            <option>Refunded</option>
+          </select>
+        </div>
+
+        <div class="portal-card">
+          <div class="portal-table-wrap">
+            <table class="portal-table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Customer</th>
+                  <th>Items</th>
+                  <th>Date</th>
+                  <th>Payment</th>
+                  <th>Total</th>
+                  <th>Order Status</th>
+                  <th>Update Status</th>
+                </tr>
+              </thead>
+              <tbody id="admin-orders-tbody">
+              </tbody>
+            </table>
+          </div>
+          <div class="portal-pagination">
+            <button class="portal-page-btn">←</button>
+            <button class="portal-page-btn active">1</button>
+            <button class="portal-page-btn">2</button>
+            <button class="portal-page-btn">3</button>
+            <button class="portal-page-btn">→</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="../../orders-data.js"></script>
+  <script src="admin-nav.js"></script>
+  <script src="admin-orders.js"></script>
+    <script src="../../portal-enhance.js"></script>
+<script src="../dashboard.js"></script>
+  <script src="../../ornza-enhance.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+[DONE] Phase 1 - Django 5 project scaffolded
+[DONE] Phase 1 - Apps created: store, cart, orders, users, control
+[DONE] Phase 1 - Models: Category, Product, ProductImage, Review, Cart, CartItem, Order, OrderItem, Profile, Address, Wishlist, AdminLog
+[DONE] Phase 1 - Migrations generated and applied
+[DONE] Phase 1 - Jinja2 environment configured with url(), static() helpers
+[DONE] Phase 1 - Static assets copied (CSS, JS, images) from html-Ornza
+[DONE] Phase 1 - Superuser created (admin / admin1234)
+[DONE] Phase 2 - base.jinja with full header/footer (Jinja2, no JS injection)
+[DONE] Phase 2 - store/home.jinja (hero, categories, products, CTAs)
+[DONE] Phase 2 - store/collections.jinja, category.jinja, product.jinja
+[DONE] Phase 2 - cart/cart.jinja with HTMX add/remove/update
+[DONE] Phase 2 - cart/checkout.jinja with address + payment method form
+[DONE] Phase 2 - orders/detail.jinja
+[DONE] Phase 2 - users/login.jinja, register.jinja, dashboard.jinja
+[DONE] Phase 2 - control/base_control.jinja + dashboard.jinja (Mission Control)
+[DONE] Phase 2 - Stub templates for all remaining 25 pages
+[DONE] Phase 2 - services.py created for cart, orders, users
+[DONE] Phase 3 - store/contact.jinja — FAQ with Alpine.js accordion, contact form
+[DONE] Phase 3 - store/about.jinja — brand story, features grid, atelier showcase
+[DONE] Phase 3 - store/reviews.jinja — masonry grid, filter bar, write review form
+[DONE] Phase 3 - store/track_order.jinja — HTMX order lookup, FAQ accordion
+[DONE] Phase 3 - store/search.jinja — search bar + results grid + suggestions
+[DONE] Phase 3 - store/size_guide.jinja — ring + bangle size tables
+[DONE] Phase 3 - store/wholesale.jinja — B2B enquiry form
+[DONE] Phase 3 - store/privacy.jinja, return_policy.jinja, shipping_info.jinja, terms.jinja
+[DONE] Phase 3 - users/orders.jinja, profile.jinja, addresses.jinja, wishlist.jinja
+[DONE] Phase 3 - control/users.jinja — HTMX live search, user table
+[DONE] Phase 3 - control/user_detail.jinja — profile + order history
+[DONE] Phase 3 - control/products.jinja — product table with status badges
+[DONE] Phase 3 - control/product_add.jinja — add product form
+[DONE] Phase 3 - control/order_detail.jinja — order info + items + address
+[DONE] Phase 3 - control/analytics.jinja — top products table
+[DONE] Phase 3 - Added enumerate/range/len etc. to Jinja2 globals
+[DONE] Phase 3 - All 18 public routes return 200, Mission Control 302→login
+[DONE] Phase 3 - CSS fix: Tailwind preflight disabled, ornza-home.css + ornza-pages.css loaded globally
+[DONE] Phase 3 - Jinja2 globals: added enumerate, range, len, min, max, zip etc.
+[DONE] Phase 3 - Product SKU field: changed to null=True to allow multiple blank SKUs
+[DONE] Phase 3 - Seed command: 16 categories + 24 products (featured + bestsellers)
+[DONE] Phase 3 - Images: copied images/, assets/, ornza images/ → static/images/ (74 total files)
+[DONE] Phase 3 - Seed: 24 products now have media images at /media/products/<slug>.png
+[DONE] Phase 3 - Seed: 6 categories have hero images at /media/categories/<name>.png
+[DONE] Phase 3 - Real product photos (44 UUID files) copied to /media/products/ornza/ for admin assignment
+[DONE] Phase 3 - CSS: ornza-home.css + ornza-pages.css loaded, Tailwind preflight disabled
+[DONE] Phase 4 - BUG FIX: csrf_input showing as literal text in product cards
+  Root cause: Jinja2 macros have isolated scope, can't access csrf_input from calling template
+  Fix 1: body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' — HTMX sends CSRF in header
+  Fix 2: Removed form wrappers from product_card macro, pure hx-post buttons
+[DONE] Phase 4 - Cart count in nav: RequestContextMixin now injects cart_count into all pages
+[DONE] Phase 4 - Contact form POST handler (logs submission, returns HTMX success message)
+[DONE] Phase 4 - Reviews POST handler stub
+[DONE] UI Fix - Header overlap resolved on homepage nav (hero mode + responsive nav spacing)
+[DONE] UI Fix - Hero section spacing below fixed header (removed negative margin, proper padding)
+[DONE] UI Fix - Category hero text overlap fixed (flex column layout), compact hero height
+[DONE] UI Fix - Home hero left text aligned below nav (flex-start, tighter typography)
+[DONE] UI Fix - Home hero section height increased by 30% (624px–832px / 80.6vh)
+[DONE] Product PDP - Multi-image gallery with thumbnails (ProductImage model + Alpine.js)
+[DONE] UI Fix - Contact page layout restored (.page block layout + ornza.css contact classes)
+[DONE] UI Fix - Ivory page text contrast (about + FAQ sections on nav-solid pages)
+[DONE] Deploy - Docker + docker-compose (web, PostgreSQL, nginx) with .env.prod
+[IN PROGRESS] Phase 4 - Product CRUD via admin, order status updates, WhatsApp integration

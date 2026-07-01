@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login · ORNZA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="../../ornza-stack.js"></script>
+
+  <link rel="stylesheet" href="../dashboard.css">
+  <style>
+    .portal-login-page.admin-login { background: linear-gradient(160deg, #1A1507 0%, #2A2210 50%, #1A1507 100%); }
+    .admin-login .portal-login-card { border-color: rgba(201,165,90,0.2); }
+    .admin-login .portal-login-logo { color: var(--portal-gold-lt); }
+    .admin-login .portal-login-subtitle { color: rgba(232,213,160,0.5); }
+  </style>
+</head>
+<body class="portal">
+  <div class="portal-login-page admin-login">
+    <div class="portal-login-card">
+      <div class="portal-login-logo">ORN<span>Z</span>A</div>
+      <p class="portal-login-subtitle">Admin Dashboard</p>
+
+      <form class="portal-form-demo" action="index.html">
+        <div class="portal-form-group">
+          <label class="portal-form-label" for="admin-email">Admin Email</label>
+          <input class="portal-form-input" type="email" id="admin-email" placeholder="admin@ornza.com" required>
+        </div>
+        <div class="portal-form-group">
+          <label class="portal-form-label" for="admin-password">Password</label>
+          <input class="portal-form-input" type="password" id="admin-password" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="portal-btn portal-btn-primary" style="width:100%;justify-content:center;margin-top:8px;">Sign In to Admin</button>
+      </form>
+
+      <p style="text-align:center;margin-top:28px;">
+        <a href="../index.html" style="font-size:12px;color:var(--portal-text-muted);">← Portal Hub</a>
+      </p>
+    </div>
+  </div>
+    <script src="../../portal-enhance.js"></script>
+<script src="../dashboard.js"></script>
+  <script src="../../ornza-enhance.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+{% extends "base.jinja" %}
+{% from "components/product_card.jinja" import product_card %}
+{% block title %}Search{% if query %}: {{ query }}{% endif %} · ORNZA{% endblock %}
+{% block body_class %}has-site-header nav-solid{% endblock %}
+
+{% block content %}
+<main class="pt-28 pb-16 px-4 md:px-8 max-w-7xl mx-auto">
+  <!-- Search Bar -->
+  <div class="mb-8">
+    <form action="{{ url('store:search') }}" method="get" class="flex items-center gap-3 max-w-xl">
+      <div class="flex-1 flex items-center gap-2 border border-gold/25 rounded px-4 py-3 focus-within:border-gold transition-colors">
+        <svg class="w-4 h-4 text-taupe flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" name="q" value="{{ query }}" class="flex-1 bg-transparent outline-none text-sm text-espresso placeholder:text-taupe/50" placeholder="Search jewellery..." autofocus>
+      </div>
+      <button type="submit" class="bg-espresso text-gold text-[10px] font-bold tracking-[0.15em] uppercase px-5 py-3 rounded transition-all hover:bg-gold hover:text-espresso">Search</button>
+    </form>
+  </div>
+
+  {% if query %}
+  <div class="mb-6">
+    <div class="text-[9px] tracking-[0.3em] uppercase text-gold mb-1">Search Results</div>
+    <h1 class="font-display text-2xl text-espresso font-light">
+      {% if products %}{{ page_obj.paginator.count }} result{{ 's' if page_obj.paginator.count != 1 }} for "{{ query }}"{% else %}No results for "{{ query }}"{% endif %}
+    </h1>
+  </div>
+
+  {% if products %}
+  <div class="product-grid-v2">
+    {% for product in products %}
+      {{ product_card(product) }}
+    {% endfor %}
+  </div>
+  {% if is_paginated %}
+  <div class="flex justify-center gap-2 mt-12">
+    {% if page_obj.has_previous() %}
+    <a href="?q={{ query }}&page={{ page_obj.previous_page_number() }}" class="px-4 py-2 border border-gold/30 text-espresso text-xs no-underline hover:border-gold">← Prev</a>
+    {% endif %}
+    <span class="px-4 py-2 text-xs text-taupe">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+    {% if page_obj.has_next() %}
+    <a href="?q={{ query }}&page={{ page_obj.next_page_number() }}" class="px-4 py-2 border border-gold/30 text-espresso text-xs no-underline hover:border-gold">Next →</a>
+    {% endif %}
+  </div>
+  {% endif %}
+  {% else %}
+  <div class="text-center py-16">
+    <div class="text-4xl text-gold mb-4">🔍</div>
+    <p class="text-sm text-taupe mb-6">Try searching for earrings, rings, mangalsutra, silver, or bracelets.</p>
+    <a href="{{ url('store:collections') }}" class="inline-block text-[10px] tracking-[0.15em] uppercase px-6 py-3 border border-gold/40 text-espresso no-underline hover:bg-espresso hover:text-gold transition-colors rounded-sm">Browse All Collections</a>
+  </div>
+  {% endif %}
+
+  {% else %}
+  <!-- Suggestions when no query -->
+  <div class="text-center py-10">
+    <p class="text-sm text-taupe mb-6">Popular searches:</p>
+    <div class="flex flex-wrap justify-center gap-3">
+      {% for term in ['Earrings','Rings','Mangalsutra','925 Silver','Hampers','Bracelets','Pearl','Men Chains'] %}
+      <a href="{{ url('store:search') }}?q={{ term }}" class="text-[10px] tracking-[0.15em] uppercase px-4 py-2 border border-gold/25 text-espresso no-underline rounded-full hover:border-gold transition-colors">{{ term }}</a>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+</main>
+{% endblock %}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wishlist · ORNZA Customer Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="../../ornza-stack.js"></script>
+
+  <link rel="stylesheet" href="../dashboard.css">
+</head>
+<body class="portal">
+  <div class="portal-shell">
+    <aside class="portal-sidebar" id="customer-sidebar" data-page="wishlist"></aside>
+
+    <div class="portal-sidebar-overlay"></div>
+
+    <main class="portal-main">
+      <header class="portal-topbar">
+        <button class="portal-topbar-toggle" aria-label="Toggle menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <h1 class="portal-topbar-title">My Wishlist</h1>
+        <div class="portal-topbar-spacer"></div>
+        <button class="portal-btn portal-btn-primary portal-btn-sm">Add All to Cart</button>
+      </header>
+
+      <div class="portal-content">
+        <div class="portal-page-actions">
+          <p style="font-size:13px;color:var(--portal-text-muted);">7 items saved · Total value ₹18,492</p>
+          <select class="portal-form-select" style="width:auto;padding:6px 12px;font-size:12px;">
+            <option>Recently Added</option>
+            <option>Price: Low to High</option>
+            <option>Price: High to Low</option>
+          </select>
+        </div>
+
+        <div class="portal-product-grid">
+          <div class="portal-product-card">
+            <div class="portal-product-card-img"><img src="../../images/earrings.png" alt="Aurora Drop Earrings"></div>
+            <div class="portal-product-card-body">
+              <div class="portal-product-card-name">Aurora Drop Earrings</div>
+              <div class="portal-product-card-price">₹1,799</div>
+              <div class="portal-product-card-actions">
+                <button class="portal-btn portal-btn-primary portal-btn-sm" style="flex:1;justify-content:center;">Add to Cart</button>
+                <button class="portal-btn portal-btn-ghost portal-btn-sm" aria-label="Remove">✕</button>
+              </div>
+            </div>
+          </div>
+          <div class="portal-product-card">
+            <div class="portal-product-card-img"><img src="../../images/necklaces.png" alt="Pearl Pendant Set"></div>
+            <div class="portal-product-card-body">
+              <div class="portal-product-card-name">Pearl Pendant Set</div>
+              <div class="portal-product-card-price">₹2,999</div>
+              <div class="portal-product-card-actions">
+                <button class="portal-btn portal-btn-primary portal-btn-sm" style="flex:1;justify-content:center;">Add to Cart</button>
+                <button class="portal-btn portal-btn-ghost portal-btn-sm" aria-label="Remove">✕</button>
+              </div>
+            </div>
+          </div>
+          <div class="portal-product-card">
+            <div class="portal-product-card-img"><img src="../../images/rings.png" alt="Celestine Solitaire Ring"></div>
+            <div class="portal-product-card-body">
+              <div class="portal-product-card-name">Celestine Solitaire Ring</div>
+              <div class="portal-product-card-price">₹1,599</div>
+              <div class="portal-product-card-actions">
+                <button class="portal-btn portal-btn-primary portal-btn-sm" style="flex:1;justify-content:center;">Add to Cart</button>
+                <button class="portal-btn portal-btn-ghost portal-btn-sm" aria-label="Remove">✕</button>
+              </div>
+            </div>
+          </div>
+          <div class="portal-product-card">
+            <div class="portal-product-card-img"><img src="../../images/bracelets.png" alt="CZ Tennis Bracelet"></div>
+            <div class="portal-product-card-body">
+              <div class="portal-product-card-name">CZ Tennis Bracelet</div>
+              <div class="portal-product-card-price">₹1,799</div>
+              <div class="portal-product-card-actions">
+                <button class="portal-btn portal-btn-primary portal-btn-sm" style="flex:1;justify-content:center;">Add to Cart</button>
+                <button class="portal-btn portal-btn-ghost portal-btn-sm" aria-label="Remove">✕</button>
+              </div>
+            </div>
+          </div>
+          <div class="portal-product-card">
+            <div class="portal-product-card-img"><img src="../../images/hamper-brides.png" alt="Bride's Delight Hamper"></div>
+            <div class="portal-product-card-body">
+              <div class="portal-product-card-name">Bride's Delight Hamper</div>
+              <div class="portal-product-card-price">₹4,999</div>
+              <div class="portal-product-card-actions">
+                <button class="portal-btn portal-btn-primary portal-btn-sm" style="flex:1;justify-content:center;">Add to Cart</button>
+                <button class="portal-btn portal-btn-ghost portal-btn-sm" aria-label="Remove">✕</button>
+              </div>
+            </div>
+          </div>
+          <div class="portal-product-card">
+            <div class="portal-product-card-img"><img src="../../images/bangles.png" alt="Gold Kada Bangle"></div>
+            <div class="portal-product-card-body">
+              <div class="portal-product-card-name">Gold Kada Bangle</div>
+              <div class="portal-product-card-price">₹2,499</div>
+              <div class="portal-product-card-actions">
+                <button class="portal-btn portal-btn-primary portal-btn-sm" style="flex:1;justify-content:center;">Add to Cart</button>
+                <button class="portal-btn portal-btn-ghost portal-btn-sm" aria-label="Remove">✕</button>
+              </div>
+            </div>
+          </div>
+          <div class="portal-product-card">
+            <div class="portal-product-card-img"><img src="../../images/hamper-anniversary.png" alt="Anniversary Gold Hamper"></div>
+            <div class="portal-product-card-body">
+              <div class="portal-product-card-name">Anniversary Gold Hamper</div>
+              <div class="portal-product-card-price">₹3,799</div>
+              <div class="portal-product-card-actions">
+                <button class="portal-btn portal-btn-primary portal-btn-sm" style="flex:1;justify-content:center;">Add to Cart</button>
+                <button class="portal-btn portal-btn-ghost portal-btn-sm" aria-label="Remove">✕</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="customer-nav.js"></script>
+    <script src="../../portal-enhance.js"></script>
+<script src="../dashboard.js"></script>
+  <script src="../../ornza-enhance.js"></script>
+</body>
+</html>

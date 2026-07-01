@@ -1,0 +1,31 @@
+{% extends "base.jinja" %}
+{% from "components/product_card.jinja" import product_card %}
+{% block title %}My Wishlist · ORNZA{% endblock %}
+{% block body_class %}has-site-header nav-solid{% endblock %}
+
+{% block content %}
+<main class="pt-28 pb-16 px-4 md:px-8 max-w-6xl mx-auto">
+  <div class="flex items-center gap-4 mb-8">
+    <a href="{{ url('users:dashboard') }}" class="text-taupe hover:text-gold-deep text-xs no-underline">← Dashboard</a>
+    <div>
+      <div class="text-[9px] tracking-[0.3em] uppercase text-gold mb-0.5">Account</div>
+      <h1 class="font-display text-2xl text-espresso font-light">My Wishlist ({{ wishlist_items|length }})</h1>
+    </div>
+  </div>
+
+  {% if wishlist_items %}
+  <div class="product-grid-v2">
+    {% for item in wishlist_items %}
+      {{ product_card(item.product) }}
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="text-center py-20">
+    <div class="text-5xl mb-4">♡</div>
+    <h2 class="font-display text-xl text-espresso mb-3">Your wishlist is empty</h2>
+    <p class="text-sm text-taupe mb-8">Save pieces you love — heart any product to add it here.</p>
+    <a href="{{ url('store:collections') }}" class="inline-flex items-center gap-2 bg-espresso text-gold text-[10px] font-bold tracking-[0.2em] uppercase px-6 py-3 rounded-sm no-underline hover:bg-gold hover:text-espresso transition-all">Browse Collections</a>
+  </div>
+  {% endif %}
+</main>
+{% endblock %}

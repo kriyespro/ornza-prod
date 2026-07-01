@@ -1,0 +1,50 @@
+{% extends "base.jinja" %}
+{% from "components/product_card.jinja" import product_card %}
+
+{% block title %}Collections · ORNZA Jewellery{% endblock %}
+{% block body_class %}has-site-header nav-solid{% endblock %}
+
+{% block content %}
+<main class="pt-28 md:pt-32 pb-16 px-4 md:px-8 max-w-7xl mx-auto">
+  <div class="mb-8">
+    <div class="text-[9px] tracking-[0.3em] uppercase text-gold font-medium mb-2">All Collections</div>
+    <h1 class="font-display text-3xl md:text-4xl text-espresso font-light">Browse Jewellery</h1>
+  </div>
+
+  <!-- Category Filter -->
+  <div class="flex flex-wrap gap-2 mb-8">
+    <a href="{{ url('store:collections') }}" class="text-[10px] tracking-[0.15em] uppercase px-4 py-2 border border-espresso bg-espresso text-gold rounded-sm no-underline">All</a>
+    {% for cat in categories %}
+    <a href="{{ url('store:category', slug=cat.slug) }}" class="text-[10px] tracking-[0.15em] uppercase px-4 py-2 border border-gold/30 text-espresso rounded-sm no-underline hover:border-gold transition-colors">{{ cat.name }}</a>
+    {% endfor %}
+  </div>
+
+  {% if products %}
+  <div class="product-grid-v2">
+    {% for product in products %}
+      {{ product_card(product) }}
+    {% endfor %}
+  </div>
+
+  <!-- Pagination -->
+  {% if is_paginated %}
+  <div class="flex justify-center gap-2 mt-12">
+    {% if page_obj.has_previous() %}
+    <a href="?page={{ page_obj.previous_page_number() }}" class="px-4 py-2 border border-gold/30 text-espresso text-xs no-underline hover:border-gold">← Prev</a>
+    {% endif %}
+    <span class="px-4 py-2 text-xs text-taupe">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+    {% if page_obj.has_next() %}
+    <a href="?page={{ page_obj.next_page_number() }}" class="px-4 py-2 border border-gold/30 text-espresso text-xs no-underline hover:border-gold">Next →</a>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {% else %}
+  <div class="text-center py-20">
+    <div class="text-4xl text-gold mb-4">✦</div>
+    <h2 class="font-display text-2xl text-espresso mb-3">No Products Yet</h2>
+    <p class="text-sm text-taupe">Check back soon — new arrivals coming weekly.</p>
+  </div>
+  {% endif %}
+</main>
+{% endblock %}

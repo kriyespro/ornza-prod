@@ -1,0 +1,31 @@
+{% extends "control/base_control.jinja" %}
+{% block title %}Add Product{% endblock %}
+{% block page_title %}Add New Product{% endblock %}
+
+{% block content %}
+<div class="mb-4"><a href="{{ url('control:products') }}" class="text-xs text-gray-500 no-underline hover:text-gray-800">← Back to Products</a></div>
+
+<div class="bg-white rounded-xl border border-gray-200 p-6 max-w-3xl">
+  <form method="post" action="{{ url('sd:store_product_add') }}" enctype="multipart/form-data" class="space-y-5">
+    {{ csrf_input }}
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div><label class="block text-xs text-gray-500 mb-1.5 font-medium">Product Name *</label><input type="text" name="name" required class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm outline-none focus:border-blue-400"></div>
+      <div><label class="block text-xs text-gray-500 mb-1.5 font-medium">SKU</label><input type="text" name="sku" class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm outline-none focus:border-blue-400"></div>
+      <div><label class="block text-xs text-gray-500 mb-1.5 font-medium">Price (₹) *</label><input type="number" name="price" required step="0.01" class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm outline-none focus:border-blue-400"></div>
+      <div><label class="block text-xs text-gray-500 mb-1.5 font-medium">Compare Price (₹)</label><input type="number" name="compare_price" step="0.01" class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm outline-none focus:border-blue-400"></div>
+      <div><label class="block text-xs text-gray-500 mb-1.5 font-medium">Stock</label><input type="number" name="stock" value="0" class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm outline-none focus:border-blue-400"></div>
+      <div><label class="block text-xs text-gray-500 mb-1.5 font-medium">Material</label><input type="text" name="material" class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm outline-none focus:border-blue-400" placeholder="e.g. 18K Gold Vermeil"></div>
+    </div>
+    <div><label class="block text-xs text-gray-500 mb-1.5 font-medium">Stones / Embellishments</label><input type="text" name="stones" class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm outline-none focus:border-blue-400" placeholder="e.g. Swiss CZ Solitaire"></div>
+    <div><label class="block text-xs text-gray-500 mb-1.5 font-medium">Description *</label><textarea name="description" rows="4" required class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm outline-none focus:border-blue-400 resize-none"></textarea></div>
+    <div><label class="block text-xs text-gray-500 mb-1.5 font-medium">Product Image</label><input type="file" name="image" accept="image/*" class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm"></div>
+    <div class="flex gap-5">
+      <label class="flex items-center gap-2 text-sm text-gray-600 cursor-pointer"><input type="checkbox" name="is_active" checked class="rounded"> Active</label>
+      <label class="flex items-center gap-2 text-sm text-gray-600 cursor-pointer"><input type="checkbox" name="is_featured" class="rounded"> Featured</label>
+      <label class="flex items-center gap-2 text-sm text-gray-600 cursor-pointer"><input type="checkbox" name="is_bestseller" class="rounded"> Bestseller</label>
+    </div>
+    <p class="text-xs text-gray-400">Note: Use Django Admin at /sd/store/product/add/ for full product management with category selection.</p>
+    <a href="/sd/store/product/add/" class="inline-block bg-gray-800 text-white text-xs px-6 py-2.5 rounded-lg no-underline hover:bg-gray-700" target="_blank">Open in Django Admin →</a>
+  </form>
+</div>
+{% endblock %}

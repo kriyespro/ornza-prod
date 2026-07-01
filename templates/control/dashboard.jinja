@@ -1,0 +1,64 @@
+{% extends "control/base_control.jinja" %}
+
+{% block title %}Dashboard{% endblock %}
+{% block page_title %}Dashboard{% endblock %}
+
+{% block content %}
+<!-- Stats -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
+  <div class="bg-white rounded-xl border border-gray-200 p-5">
+    <div class="text-xs text-gray-500 mb-1">Total Users</div>
+    <div class="text-2xl font-bold text-gray-800">{{ total_users }}</div>
+    <div class="text-xs text-green-600 mt-1">{{ signups_today }} today</div>
+  </div>
+  <div class="bg-white rounded-xl border border-gray-200 p-5">
+    <div class="text-xs text-gray-500 mb-1">Total Orders</div>
+    <div class="text-2xl font-bold text-gray-800">{{ total_orders }}</div>
+  </div>
+  <div class="bg-white rounded-xl border border-gray-200 p-5">
+    <div class="text-xs text-gray-500 mb-1">Revenue (Paid)</div>
+    <div class="text-2xl font-bold text-gray-800">₹{{ "{:,.0f}".format(revenue) }}</div>
+  </div>
+  <div class="bg-white rounded-xl border border-gray-200 p-5" hx-get="{{ url('control:dashboard') }}" hx-trigger="every 30s" hx-select="#live-stat" hx-swap="outerHTML">
+    <div id="live-stat">
+      <div class="text-xs text-gray-500 mb-1">Live Orders</div>
+      <div class="text-2xl font-bold text-gold">{{ total_orders }}</div>
+      <div class="text-xs text-gray-400 mt-1">Updates every 30s</div>
+    </div>
+  </div>
+</div>
+
+<!-- Recent Orders -->
+<div class="bg-white rounded-xl border border-gray-200 p-6">
+  <div class="flex items-center justify-between mb-5">
+    <h2 class="font-semibold text-gray-800">Recent Orders</h2>
+    <a href="{{ url('control:orders') }}" class="text-xs text-gray-500 no-underline hover:text-gray-800">View all →</a>
+  </div>
+  {% if recent_orders %}
+  <table class="w-full">
+    <thead>
+      <tr class="text-[10px] tracking-wider uppercase text-gray-400 border-b border-gray-100">
+        <th class="text-left pb-3">Order</th>
+        <th class="text-left pb-3">Customer</th>
+        <th class="text-left pb-3">Status</th>
+        <th class="text-left pb-3">Date</th>
+        <th class="text-right pb-3">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for order in recent_orders %}
+      <tr class="border-b border-gray-50 hover:bg-gray-50 transition-colors">
+        <td class="py-3"><a href="{{ url('control:order_detail', pk=order.pk) }}" class="text-blue-600 no-underline hover:underline text-xs font-medium">{{ order.order_number }}</a></td>
+        <td class="py-3 text-xs text-gray-600">{{ order.full_name }}</td>
+        <td class="py-3"><span class="text-[9px] uppercase tracking-wide px-2 py-1 rounded bg-gray-100 text-gray-600">{{ order.status }}</span></td>
+        <td class="py-3 text-xs text-gray-400">{{ order.created_at.strftime('%d %b') }}</td>
+        <td class="py-3 text-xs text-right font-medium">₹{{ "{:,.0f}".format(order.total) }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div class="text-center py-10 text-gray-400 text-sm">No orders yet.</div>
+  {% endif %}
+</div>
+{% endblock %}

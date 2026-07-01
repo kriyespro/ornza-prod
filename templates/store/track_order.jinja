@@ -1,0 +1,128 @@
+{% extends "base.jinja" %}
+
+{% block title %}Track Your Order · ORNZA{% endblock %}
+{% block body_class %}has-site-header nav-solid track-page{% endblock %}
+
+{% block content %}
+
+<!-- Hero -->
+<div class="track-hero">
+  <div style="position:relative;z-index:1;">
+    <div style="font-size:32px;margin-bottom:16px;">📦</div>
+    <div style="font-size:9px;letter-spacing:0.35em;text-transform:uppercase;color:#C9A84C;margin-bottom:12px;font-weight:500;">Real-Time Delivery Tracking</div>
+    <h1 style="font-family:'Playfair Display',serif;font-size:clamp(32px,6vw,58px);font-weight:300;color:#FFFFF0;letter-spacing:0.06em;margin-bottom:12px;">Track Your <em style="color:#C9A84C;">Order</em></h1>
+    <p style="font-size:13px;color:rgba(232,213,160,0.55);font-weight:300;max-width:480px;margin:0 auto;">Enter your order number below to instantly see your delivery status and estimated arrival date.</p>
+  </div>
+</div>
+
+<!-- Track Form -->
+<div class="track-form-wrapper">
+  <div class="track-form-card">
+    <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#C9A84C;margin-bottom:28px;font-weight:500;">Enter Order Details</div>
+
+    <form method="get" action="{{ url('store:track_order') }}"
+      hx-get="{{ url('store:track_order') }}"
+      hx-target="#track-result"
+      hx-swap="outerHTML">
+      <div class="form-group" style="margin-bottom:16px;">
+        <label>Order Number</label>
+        <input type="text" name="order_number" class="form-input" placeholder="e.g. ORZABCD1234" maxlength="30" value="{{ request.GET.get('order_number', '') }}">
+      </div>
+      <div class="form-group" style="margin-bottom:24px;">
+        <label>Email / Phone Used at Checkout</label>
+        <input type="text" name="contact" class="form-input" placeholder="yourname@email.com or +91 98765 43210">
+      </div>
+      <button class="form-submit-btn" type="submit">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        Track My Order
+      </button>
+    </form>
+
+    <div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(201,168,76,0.08);text-align:center;">
+      <div style="font-size:10px;color:rgba(232,213,160,0.4);margin-bottom:8px;">Need help? Contact us directly</div>
+      <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
+        <a href="https://wa.me/919999999999" target="_blank" style="font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:#25D366;text-decoration:none;">📱 WhatsApp</a>
+        <a href="mailto:ornzza.com@gmail.com" style="font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:#C9A84C;text-decoration:none;">✉ Email Us</a>
+        <a href="{{ url('store:contact') }}" style="font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(232,213,160,0.5);text-decoration:none;">💬 Contact Page</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Result Panel -->
+<div class="track-result" id="track-result" {% if not order %}style="display:none;"{% endif %}>
+  {% if order %}
+  <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#C9A84C;margin-bottom:20px;text-align:center;font-weight:500;">Order Status</div>
+  <div class="track-eta-card">
+    <div class="track-eta-icon">🚚</div>
+    <div>
+      <div class="track-eta-label">Order Status</div>
+      <div class="track-eta-date">{{ order.status|title }}</div>
+      <div class="track-eta-note">{{ order.order_number }}</div>
+    </div>
+  </div>
+  <div class="track-order-info">
+    <div><div class="order-info-item-label">Order ID</div><div class="order-info-item-val">{{ order.order_number }}</div></div>
+    <div><div class="order-info-item-label">Items</div><div class="order-info-item-val">{{ order.items.count() }}</div></div>
+    <div><div class="order-info-item-label">Order Date</div><div class="order-info-item-val">{{ order.created_at.strftime('%d %b %Y') }}</div></div>
+    <div><div class="order-info-item-label">Total</div><div class="order-info-item-val">₹{{ "{:,.0f}".format(order.total) }}</div></div>
+    <div><div class="order-info-item-label">Payment</div><div class="order-info-item-val">{{ order.payment_method|upper }}</div></div>
+  </div>
+  {% elif request.GET.get('order_number') %}
+  <div class="ornza-tw text-center py-10 text-champagne/60">
+    <div class="text-3xl mb-4">🔍</div>
+    <p>No order found for that order number. Please check and try again.</p>
+  </div>
+  {% endif %}
+</div>
+
+<!-- Shipping Info Strip -->
+<div style="max-width:700px;margin:0 auto 40px;padding:0 24px;">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:center;">
+    <div style="background:rgba(201,168,76,0.03);border:1px solid rgba(201,168,76,0.1);border-radius:8px;padding:20px;">
+      <div style="font-size:20px;margin-bottom:8px;">🆓</div>
+      <div style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#C9A84C;margin-bottom:4px;">Free Shipping</div>
+      <div style="font-size:10px;color:rgba(232,213,160,0.4);">On all orders above ₹999</div>
+    </div>
+    <div style="background:rgba(201,168,76,0.03);border:1px solid rgba(201,168,76,0.1);border-radius:8px;padding:20px;">
+      <div style="font-size:20px;margin-bottom:8px;">⚡</div>
+      <div style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#C9A84C;margin-bottom:4px;">Express Delivery</div>
+      <div style="font-size:10px;color:rgba(232,213,160,0.4);">2–3 days across India</div>
+    </div>
+    <div style="background:rgba(201,168,76,0.03);border:1px solid rgba(201,168,76,0.1);border-radius:8px;padding:20px;">
+      <div style="font-size:20px;margin-bottom:8px;">🔒</div>
+      <div style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#C9A84C;margin-bottom:4px;">Secure Packaging</div>
+      <div style="font-size:10px;color:rgba(232,213,160,0.4);">Tamper-proof luxury box</div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="track-faq" x-data="{ open: null }">
+  <div class="track-faq-title">Shipping FAQs</div>
+  {% set faqs = [
+    ('How long does delivery take?', 'Standard delivery across India takes 3–5 business days. Express shipping (2–3 days) is also available. Remote areas may take up to 7 days.'),
+    ('I can\'t find my Order ID. Where do I look?', 'Your Order ID is in the confirmation email sent to you at checkout. It starts with "ORZ" followed by 8 characters. If you can\'t find it, WhatsApp us and we\'ll help immediately.'),
+    ('Can I change my delivery address after ordering?', 'Yes, if your order hasn\'t shipped yet we can update the address. Contact us via WhatsApp or email within 2 hours of placing your order.'),
+    ('What if my order is delayed?', 'If your order is more than 2 days past its ETA, please contact our support team and we will prioritize resolution.'),
+    ('Do you ship internationally?', 'Currently we ship within India only. International shipping is coming soon. If you\'re outside India, please contact us directly.'),
+  ] %}
+  {% for i, (q, a) in enumerate(faqs) %}
+  <div class="faq-mini-item" @click="open = open === {{ i }} ? null : {{ i }}">
+    <div class="faq-mini-q">{{ q }} <span style="color:#C9A84C;" x-text="open === {{ i }} ? '−' : '+'">+</span></div>
+    <div class="faq-mini-a" x-show="open === {{ i }}" x-transition>{{ a }}</div>
+  </div>
+  {% endfor %}
+
+  <div style="text-align:center;margin-top:32px;">
+    <a href="{{ url('store:contact') }}" style="display:inline-flex;align-items:center;gap:8px;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#C9A84C;text-decoration:none;border:1px solid rgba(201,168,76,0.25);padding:11px 24px;border-radius:3px;">
+      Still have questions? Contact Support →
+    </a>
+  </div>
+</div>
+
+<a href="https://wa.me/919999999999" class="wa-sticky-btn" target="_blank" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="wa-tooltip">Chat with us</span>
+</a>
+{% endblock %}

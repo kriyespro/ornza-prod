@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings · ORNZA Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="../../ornza-stack.js"></script>
+
+  <link rel="stylesheet" href="../dashboard.css">
+</head>
+<body class="portal">
+  <div class="portal-shell">
+    <aside class="portal-sidebar admin-sidebar" id="admin-sidebar" data-page="settings"></aside>
+
+    <div class="portal-sidebar-overlay"></div>
+
+    <main class="portal-main">
+      <header class="portal-topbar">
+        <button class="portal-topbar-toggle" aria-label="Toggle menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <h1 class="portal-topbar-title">Store Settings</h1>
+        <div class="portal-topbar-spacer"></div>
+        <button class="portal-btn portal-btn-primary portal-btn-sm">Save All Changes</button>
+      </header>
+
+      <div class="portal-content">
+        <div class="portal-grid-2">
+          <div class="portal-card">
+            <div class="portal-card-header">
+              <h2 class="portal-card-title">Store Information</h2>
+            </div>
+            <div class="portal-card-body">
+              <form class="portal-form-demo">
+                <div class="portal-form-group">
+                  <label class="portal-form-label">Store Name</label>
+                  <input class="portal-form-input" type="text" value="ORNZA Fine Jewellery">
+                </div>
+                <div class="portal-form-group">
+                  <label class="portal-form-label">Tagline</label>
+                  <input class="portal-form-input" type="text" value="Surat's Most Loved Jewellery Brand">
+                </div>
+                <div class="portal-form-group">
+                  <label class="portal-form-label">Support Email</label>
+                  <input class="portal-form-input" type="email" value="hello@ornza.com">
+                </div>
+                <div class="portal-form-group">
+                  <label class="portal-form-label">Support Phone</label>
+                  <input class="portal-form-input" type="tel" value="+91 98765 43210">
+                </div>
+                <div class="portal-form-group">
+                  <label class="portal-form-label">Showroom Address</label>
+                  <textarea class="portal-form-textarea">402-405, Gold Crest Tower, Diamond Hub Road, Mahidharpura, Surat - 395003, Gujarat, India</textarea>
+                </div>
+                <button type="submit" class="portal-btn portal-btn-primary">Save Store Info</button>
+              </form>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:24px;">
+            <div class="portal-card">
+              <div class="portal-card-header">
+                <h2 class="portal-card-title">Shipping &amp; Delivery</h2>
+              </div>
+              <div class="portal-card-body">
+                <form class="portal-form-demo">
+                  <div class="portal-form-group">
+                    <label class="portal-form-label">Free Shipping Threshold (₹)</label>
+                    <input class="portal-form-input" type="number" value="999">
+                  </div>
+                  <div class="portal-form-group">
+                    <label class="portal-form-label">Standard Delivery (days)</label>
+                    <input class="portal-form-input" type="text" value="3-5 business days">
+                  </div>
+                  <label style="display:flex;align-items:center;gap:8px;font-size:13px;margin-bottom:16px;cursor:pointer;">
+                    <input type="checkbox" checked> Cash on Delivery (COD)
+                  </label>
+                  <label style="display:flex;align-items:center;gap:8px;font-size:13px;margin-bottom:16px;cursor:pointer;">
+                    <input type="checkbox" checked> Premium Gift Packaging
+                  </label>
+                  <button type="submit" class="portal-btn portal-btn-outline">Save Shipping</button>
+                </form>
+              </div>
+            </div>
+
+            <div class="portal-card">
+              <div class="portal-card-header">
+                <h2 class="portal-card-title">Payment Methods</h2>
+              </div>
+              <div class="portal-card-body">
+                <label style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--portal-border);cursor:pointer;">
+                  <span style="font-size:13px;">UPI / GPay / PhonePe</span>
+                  <input type="checkbox" checked>
+                </label>
+                <label style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--portal-border);cursor:pointer;">
+                  <span style="font-size:13px;">Credit / Debit Cards</span>
+                  <input type="checkbox" checked>
+                </label>
+                <label style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--portal-border);cursor:pointer;">
+                  <span style="font-size:13px;">Cash on Delivery</span>
+                  <input type="checkbox" checked>
+                </label>
+                <label style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;cursor:pointer;">
+                  <span style="font-size:13px;">WhatsApp Order</span>
+                  <input type="checkbox" checked>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="portal-grid-2" style="margin-top:24px;">
+          <div class="portal-card">
+            <div class="portal-card-header">
+              <h2 class="portal-card-title">Admin Account</h2>
+            </div>
+            <div class="portal-card-body">
+              <form class="portal-form-demo">
+                <div class="portal-form-row">
+                  <div class="portal-form-group">
+                    <label class="portal-form-label">Admin Name</label>
+                    <input class="portal-form-input" type="text" value="Admin Kumar">
+                  </div>
+                  <div class="portal-form-group">
+                    <label class="portal-form-label">Admin Email</label>
+                    <input class="portal-form-input" type="email" value="admin@ornza.com">
+                  </div>
+                </div>
+                <div class="portal-form-group">
+                  <label class="portal-form-label">New Password</label>
+                  <input class="portal-form-input" type="password" placeholder="Leave blank to keep current">
+                </div>
+                <button type="submit" class="portal-btn portal-btn-outline">Update Account</button>
+              </form>
+            </div>
+          </div>
+
+          <div class="portal-card">
+            <div class="portal-card-header">
+              <h2 class="portal-card-title">Notifications &amp; Integrations</h2>
+            </div>
+            <div class="portal-card-body">
+              <div class="portal-form-group">
+                <label class="portal-form-label">WhatsApp Business Number</label>
+                <input class="portal-form-input" type="tel" value="+91 98765 43210">
+              </div>
+              <div class="portal-form-group">
+                <label class="portal-form-label">Order Alert Email</label>
+                <input class="portal-form-input" type="email" value="orders@ornza.com">
+              </div>
+              <label style="display:flex;align-items:center;gap:8px;font-size:13px;margin-bottom:12px;cursor:pointer;">
+                <input type="checkbox" checked> Email on new order
+              </label>
+              <label style="display:flex;align-items:center;gap:8px;font-size:13px;margin-bottom:12px;cursor:pointer;">
+                <input type="checkbox" checked> SMS on low stock alert
+              </label>
+              <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;">
+                <input type="checkbox"> Weekly revenue report
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="portal-card" style="margin-top:24px;border-color:rgba(196,92,74,0.25);">
+          <div class="portal-card-header">
+            <h2 class="portal-card-title" style="color:#A63D2F;">Danger Zone</h2>
+          </div>
+          <div class="portal-card-body" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+            <div>
+              <p style="font-size:13px;font-weight:500;margin-bottom:4px;">Clear all demo data</p>
+              <p style="font-size:12px;color:var(--portal-text-muted);">Resets orders, customers and analytics to sample data.</p>
+            </div>
+            <button type="button" class="portal-btn portal-btn-danger portal-btn-sm" id="reset-demo-btn">Reset Demo Data</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="../../orders-data.js"></script>
+  <script src="admin-nav.js"></script>
+    <script src="../../portal-enhance.js"></script>
+<script src="../dashboard.js"></script>
+  <script>
+    document.getElementById('reset-demo-btn')?.addEventListener('click', () => {
+      if (window.OrnzaOrders?.resetDemoData) {
+        window.OrnzaOrders.resetDemoData();
+        const btn = document.getElementById('reset-demo-btn');
+        btn.textContent = 'Reset ✓';
+        setTimeout(() => { btn.textContent = 'Reset Demo Data'; }, 2000);
+      }
+    });
+  </script>
+  <script src="../../ornza-enhance.js"></script>
+</body>
+</html>

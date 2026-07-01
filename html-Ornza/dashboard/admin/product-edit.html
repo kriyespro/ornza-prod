@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Product · ORNZA Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="../../ornza-stack.js"></script>
+
+  <link rel="stylesheet" href="../dashboard.css">
+</head>
+<body class="portal">
+  <div class="portal-shell">
+    <aside class="portal-sidebar admin-sidebar" id="admin-sidebar" data-page="products"></aside>
+    <div class="portal-sidebar-overlay"></div>
+    <main class="portal-main">
+      <header class="portal-topbar">
+        <button class="portal-topbar-toggle" aria-label="Toggle menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+        <h1 class="portal-topbar-title">Edit Product</h1>
+        <div class="portal-topbar-spacer"></div>
+        <button class="portal-btn portal-btn-danger portal-btn-sm">Delete</button>
+        <a href="products.html" class="portal-btn portal-btn-outline portal-btn-sm">← Products</a>
+      </header>
+      <div class="portal-content">
+        <div class="portal-grid-2">
+          <div class="portal-card">
+            <div class="portal-card-header"><h2 class="portal-card-title" id="edit-product-title">Aurora Drop Earrings</h2><span class="portal-status active" id="edit-product-status">Active</span></div>
+            <div class="portal-card-body">
+              <form class="portal-form-demo" id="edit-product-form">
+                <div class="portal-form-group">
+                  <label class="portal-form-label">Product Name</label>
+                  <input class="portal-form-input" type="text" id="edit-name" value="Aurora Drop Earrings">
+                </div>
+                <div class="portal-form-row">
+                  <div class="portal-form-group">
+                    <label class="portal-form-label">SKU</label>
+                    <input class="portal-form-input" type="text" id="edit-sku" value="ORN-EAR-001" readonly>
+                  </div>
+                  <div class="portal-form-group">
+                    <label class="portal-form-label">Price (₹)</label>
+                    <input class="portal-form-input" type="number" id="edit-price" value="1799">
+                  </div>
+                </div>
+                <div class="portal-form-row">
+                  <div class="portal-form-group">
+                    <label class="portal-form-label">Category</label>
+                    <select class="portal-form-select" id="edit-category">
+                      <option selected>Earrings</option><option>Necklaces</option><option>Rings</option>
+                      <option>Bracelets</option><option>Hampers</option>
+                    </select>
+                  </div>
+                  <div class="portal-form-group">
+                    <label class="portal-form-label">Stock</label>
+                    <input class="portal-form-input" type="number" id="edit-stock" value="84">
+                  </div>
+                </div>
+                <div class="portal-form-group">
+                  <label class="portal-form-label">Description</label>
+                  <textarea class="portal-form-textarea" id="edit-desc">Gold Plated · CZ Crystals · Hypoallergenic Posts · Available in 3 colours</textarea>
+                </div>
+                <button type="submit" class="portal-btn portal-btn-primary">Save Changes</button>
+              </form>
+            </div>
+          </div>
+          <div class="portal-card">
+            <div class="portal-card-header"><h2 class="portal-card-title">Preview</h2></div>
+            <div class="portal-card-body" style="text-align:center;">
+              <img id="edit-preview-img" src="../../images/earrings.png" alt="" style="max-width:220px;margin:0 auto 20px;border-radius:12px;border:1px solid var(--portal-border);">
+              <p style="font-size:12px;color:var(--portal-text-muted);">SKU: <span id="edit-preview-sku">ORN-EAR-001</span></p>
+              <p style="font-size:18px;font-weight:600;color:var(--portal-gold-deep);margin-top:8px;" id="edit-preview-price">₹1,799</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="admin-nav.js"></script>
+  <script src="admin-products.js"></script>
+  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const sku = params.get('sku');
+      const products = window.OrnzaAdminProducts?.PRODUCTS || [];
+      const p = products.find((x) => x.sku === sku) || products[0];
+      if (!p) return;
+      document.getElementById('edit-product-title').textContent = p.name;
+      document.getElementById('edit-name').value = p.name;
+      document.getElementById('edit-sku').value = p.sku;
+      document.getElementById('edit-preview-sku').textContent = p.sku;
+      document.getElementById('edit-price').value = parseInt(p.price.replace(/[^\d]/g, ''), 10) || 0;
+      document.getElementById('edit-preview-price').textContent = p.price;
+      document.getElementById('edit-stock').value = p.stock;
+      document.getElementById('edit-preview-img').src = p.img;
+      const cat = document.getElementById('edit-category');
+      [...cat.options].forEach((o) => { o.selected = o.text === p.cat; });
+    })();
+  </script>
+    <script src="../../portal-enhance.js"></script>
+<script src="../dashboard.js"></script>
+  <script src="../../ornza-enhance.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+ORNZA E-Commerce - Development Plan
+=====================================
+
+PHASE 1: Project Setup & Core Models [DONE]
+- Django 5 project scaffold
+- Apps: store, cart, orders, users, control
+- Models: Category, Product, ProductImage, Review, Cart, CartItem, Order, OrderItem, Profile, Address, Wishlist, AdminLog
+- Migrations applied
+- Jinja2 template engine configured
+- Static files: CSS, JS, images copied from html-Ornza
+
+PHASE 2: Frontend Templates [IN PROGRESS]
+- base.jinja (header + footer) [DONE]
+- store/home.jinja [DONE]
+- store/collections.jinja [DONE]
+- store/category.jinja [DONE]
+- store/product.jinja [DONE]
+- cart/cart.jinja [DONE]
+- cart/checkout.jinja [DONE]
+- orders/detail.jinja [DONE]
+- users/login.jinja [DONE]
+- users/register.jinja [DONE]
+- users/dashboard.jinja [DONE]
+- control/base_control.jinja [DONE]
+- control/dashboard.jinja [DONE]
+- Stub templates for all other pages [DONE]
+
+PHASE 3: Full Template Conversion (from html-Ornza)
+- Convert contact.html → store/contact.jinja
+- Convert about.html → store/about.jinja
+- Convert reviews.html → store/reviews.jinja
+- Convert track-order.html → store/track_order.jinja
+- Convert search results page
+- Convert size-guide, wholesale, privacy, terms, return-policy, shipping-info
+- Convert customer portal pages (profile, orders, addresses, wishlist)
+- Build full Mission Control (users list, product CRUD, order management)
+
+PHASE 4: Business Logic
+- Cart session management (guest + authenticated)
+- Order creation flow
+- Wishlist toggle
+- Admin product CRUD (add/edit/delete)
+- Order status updates from admin
+- Search functionality
+
+PHASE 5: Data & Admin
+- Django admin registration for all models
+- Seed data (categories + sample products)
+- Product import from products-data.js
+
+PHASE 6: Production Readiness
+- Switch to PostgreSQL
+- WhatsApp integration
+- Email notifications
+- Payment gateway (Razorpay)
+- Deploy to server

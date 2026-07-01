@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}ORNZA · Premium Artificial Jewellery · Surat, India{% endblock %}</title>
+  <meta name="description" content="{% block meta_description %}ORNZA — India's premium artificial jewellery brand from Surat. Shop earrings, necklace sets, rings, bracelets, mangalsutras, 925 silver & luxury gift hampers. Free shipping ₹999+. COD available across India.{% endblock %}">
+  <meta property="og:title" content="{% block og_title %}ORNZA · Premium Artificial Jewellery · Surat, India{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}Luxury artificial jewellery crafted in Surat.{% endblock %}">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      corePlugins: { preflight: false },
+      theme: {
+        extend: {
+          colors: {
+            gold: { DEFAULT: '#C9A55A', light: '#E8D5A0', deep: '#A8833A' },
+            espresso: { DEFAULT: '#1A1507', muted: '#3D3420' },
+            ivory: { DEFAULT: '#FFFFF0', alt: '#FAF7F0' },
+            champagne: '#F7E7CE',
+            taupe: { DEFAULT: '#5C4F38', muted: '#7A6B4A' },
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'Cormorant Garamond', 'serif'],
+            sans: ['Poppins', 'Montserrat', 'sans-serif'],
+          },
+          boxShadow: {
+            ornza: '0 8px 32px rgba(10,8,4,0.15)',
+          },
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="{{ static('css/ornza.css') }}">
+  <link rel="stylesheet" href="{{ static('css/ornza-home.css') }}">
+  <link rel="stylesheet" href="{{ static('css/ornza-pages.css') }}">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://unpkg.com/htmx.org@2.0.0/dist/htmx.min.js"></script>
+  {% block extra_head %}{% endblock %}
+</head>
+<body class="ornza-page {% block body_class %}{% endblock %}"
+      hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+
+
+<!-- SITE HEADER -->
+<div class="ornza-header-root ornza-tw" x-data="ornzaNav()" x-cloak @keydown.escape.window="closeAll()">
+  <div class="site-header-wrap fixed top-0 left-0 right-0 z-[300] w-full">
+
+    <!-- Announcement Bar -->
+    <div class="ann-bar ornza-tw bg-gradient-to-r from-[#0a0804] via-[#1a1408] to-[#0a0804] border-b border-gold/20 px-5 overflow-hidden h-[37px] flex items-center">
+      <div class="ann-bar-track flex gap-20 items-center w-max" style="animation: annScroll 28s linear infinite;">
+        <div class="flex items-center gap-2 text-[10px] tracking-[0.15em] uppercase text-champagne/80 whitespace-nowrap"><span class="text-gold">✦</span> Free Shipping Above ₹999</div><div class="w-1 h-1 rounded-full bg-gold/40 flex-shrink-0"></div>
+        <div class="flex items-center gap-2 text-[10px] tracking-[0.15em] uppercase text-champagne/80 whitespace-nowrap"><span class="text-gold">✦</span> Cash on Delivery Available</div><div class="w-1 h-1 rounded-full bg-gold/40 flex-shrink-0"></div>
+        <div class="flex items-center gap-2 text-[10px] tracking-[0.15em] uppercase text-champagne/80 whitespace-nowrap"><span class="text-gold">✦</span> Premium Gift Packaging on All Orders</div><div class="w-1 h-1 rounded-full bg-gold/40 flex-shrink-0"></div>
+        <div class="flex items-center gap-2 text-[10px] tracking-[0.15em] uppercase text-champagne/80 whitespace-nowrap"><span class="text-gold">✦</span> BIS Hallmarked 925 Silver Collection</div><div class="w-1 h-1 rounded-full bg-gold/40 flex-shrink-0"></div>
+        <div class="flex items-center gap-2 text-[10px] tracking-[0.15em] uppercase text-champagne/80 whitespace-nowrap"><span class="text-gold">⭐</span> 10,000+ Happy Customers</div><div class="w-1 h-1 rounded-full bg-gold/40 flex-shrink-0"></div>
+        <div class="flex items-center gap-2 text-[10px] tracking-[0.15em] uppercase text-champagne/80 whitespace-nowrap"><span class="text-gold">✦</span> Surat's Most Loved Jewellery Brand</div><div class="w-1 h-1 rounded-full bg-gold/40 flex-shrink-0"></div>
+        <!-- duplicate for seamless scroll -->
+        <div class="flex items-center gap-2 text-[10px] tracking-[0.15em] uppercase text-champagne/80 whitespace-nowrap"><span class="text-gold">✦</span> Free Shipping Above ₹999</div><div class="w-1 h-1 rounded-full bg-gold/40 flex-shrink-0"></div>
+        <div class="flex items-center gap-2 text-[10px] tracking-[0.15em] uppercase text-champagne/80 whitespace-nowrap"><span class="text-gold">✦</span> Cash on Delivery Available</div><div class="w-1 h-1 rounded-full bg-gold/40 flex-shrink-0"></div>
+        <div class="flex items-center gap-2 text-[10px] tracking-[0.15em] uppercase text-champagne/80 whitespace-nowrap"><span class="text-gold">✦</span> Premium Gift Packaging on All Orders</div><div class="w-1 h-1 rounded-full bg-gold/40 flex-shrink-0"></div>
+        <div class="flex items-center gap-2 text-[10px] tracking-[0.15em] uppercase text-champagne/80 whitespace-nowrap"><span class="text-gold">✦</span> BIS Hallmarked 925 Silver Collection</div><div class="w-1 h-1 rounded-full bg-gold/40 flex-shrink-0"></div>
+        <div class="flex items-center gap-2 text-[10px] tracking-[0.15em] uppercase text-champagne/80 whitespace-nowrap"><span class="text-gold">⭐</span> 10,000+ Happy Customers</div><div class="w-1 h-1 rounded-full bg-gold/40 flex-shrink-0"></div>
+        <div class="flex items-center gap-2 text-[10px] tracking-[0.15em] uppercase text-champagne/80 whitespace-nowrap"><span class="text-gold">✦</span> Surat's Most Loved Jewellery Brand</div>
+      </div>
+    </div>
+
+    <!-- Main Nav -->
+    <nav class="nav ornza-tw relative w-full grid grid-cols-[minmax(0,1fr)_minmax(0,auto)_minmax(0,1fr)] items-center gap-2 xl:gap-3 h-20 px-[4%] xl:px-[6%] transition-all duration-500" id="main-nav">
+      <a href="{{ url('store:home') }}" class="nav-logo justify-self-start font-display text-[2rem] font-light tracking-[0.15em] text-ivory no-underline whitespace-nowrap">ORN<span class="text-gold italic">Z</span>A</a>
+
+      <ul class="nav-links-hp justify-self-center hidden lg:flex items-center list-none m-0 p-0">
+        <li><a href="{{ url('store:home') }}" data-nav="home">Home</a></li>
+        <li class="mega-parent">
+          <a href="{{ url('store:category', slug='women') }}" class="mega-trigger" data-nav="women">Women
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="chevron-icon"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+          <div class="mega-menu">
+            <div class="mega-menu-inner">
+              <div class="mega-section">
+                <div class="mega-section-label">Women's Jewellery</div>
+                <ul class="mega-list">
+                  <li><a href="{{ url('store:category', slug='mangalsutras') }}"><span class="mega-icon">◆</span> Mangalsutras</a></li>
+                  <li><a href="{{ url('store:category', slug='bracelets') }}"><span class="mega-icon">◆</span> Bracelets</a></li>
+                  <li><a href="{{ url('store:category', slug='chains') }}"><span class="mega-icon">◆</span> Chains</a></li>
+                  <li><a href="{{ url('store:category', slug='pendants') }}"><span class="mega-icon">◆</span> Pendants</a></li>
+                  <li><a href="{{ url('store:category', slug='silver-925') }}"><span class="mega-icon">◆</span> 925 Silver</a></li>
+                  <li><a href="{{ url('store:category', slug='rings') }}"><span class="mega-icon">◆</span> Rings</a></li>
+                  <li><a href="{{ url('store:category', slug='earrings') }}"><span class="mega-icon">◆</span> Earrings</a></li>
+                  <li><a href="{{ url('store:category', slug='pearl') }}"><span class="mega-icon">◆</span> Pearl Collection</a></li>
+                </ul>
+              </div>
+              <div class="mega-featured">
+                <div class="mega-featured-tag">New Season</div>
+                <div class="mega-featured-title">Pearl Collection</div>
+                <p class="mega-featured-desc">Timeless elegance with lustrous freshwater pearls</p>
+                <a href="{{ url('store:category', slug='pearl') }}" class="mega-featured-link">Explore →</a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="mega-parent">
+          <a href="{{ url('store:category', slug='men') }}" class="mega-trigger" data-nav="men">Men
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="chevron-icon"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+          <div class="mega-menu">
+            <div class="mega-menu-inner">
+              <div class="mega-section">
+                <div class="mega-section-label">Men's Collection</div>
+                <ul class="mega-list">
+                  <li><a href="{{ url('store:category', slug='men-bracelets') }}"><span class="mega-icon">◆</span> Bracelets</a></li>
+                  <li><a href="{{ url('store:category', slug='men-chains') }}"><span class="mega-icon">◆</span> Chains</a></li>
+                  <li><a href="{{ url('store:category', slug='men-pendants') }}"><span class="mega-icon">◆</span> Pendants</a></li>
+                  <li><a href="{{ url('store:category', slug='men-rings') }}"><span class="mega-icon">◆</span> Rings</a></li>
+                </ul>
+              </div>
+              <div class="mega-featured">
+                <div class="mega-featured-tag">Best Sellers</div>
+                <div class="mega-featured-title">Cuban Link Chains</div>
+                <p class="mega-featured-desc">Bold, refined chains for the modern gentleman</p>
+                <a href="{{ url('store:category', slug='men-chains') }}" class="mega-featured-link">Explore →</a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="{{ url('store:category', slug='silver-925') }}" data-nav="silver925">925 Silver</a></li>
+        <li><a href="{{ url('store:category', slug='hampers') }}" data-nav="hampers">Hampers</a></li>
+        <li><a href="{{ url('store:reviews') }}" data-nav="reviews">Reviews</a></li>
+        <li><a href="{{ url('store:track_order') }}" data-nav="track-order">Track Order</a></li>
+        <li><a href="{{ url('store:collections') }}" data-nav="collections">Collections</a></li>
+        <li><a href="{{ url('store:contact') }}" data-nav="contact">Contact</a></li>
+        {% if request.user.is_authenticated %}
+        <li><a href="{{ url('users:dashboard') }}" data-nav="account">Account</a></li>
+        {% else %}
+        <li><a href="{{ url('users:login') }}" data-nav="account">Login</a></li>
+        {% endif %}
+      </ul>
+
+      <div class="nav-right-group justify-self-end flex items-center gap-3">
+        <button type="button" class="nav-search-btn w-10 h-10 flex items-center justify-center border border-white/30 rounded-full text-ivory bg-transparent cursor-pointer transition-colors hover:border-gold hover:text-gold" aria-label="Search" @click="openSearch()">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <a href="{{ url('cart:cart') }}" class="nav-cart-btn relative w-10 h-10 flex items-center justify-center border border-white/30 rounded-full text-ivory no-underline transition-colors hover:border-gold hover:text-gold" aria-label="Cart">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="20" r="1"/><circle cx="17" cy="20" r="1"/><path d="M3 3h2l2.2 10.3a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6L21 7H6"/></svg>
+          <span class="cart-count absolute -top-1 -right-1 w-4 h-4 rounded-full bg-gold text-espresso text-[9px] font-bold flex items-center justify-center" id="cart-count">{{ cart_count if cart_count is defined else 0 }}</span>
+        </a>
+        <a href="{{ url('store:contact') }}" class="nav-cta text-[0.72rem] font-medium tracking-[0.18em] uppercase px-5 py-2.5 border border-white/50 text-ivory no-underline whitespace-nowrap transition-all hover:bg-gold hover:border-gold hover:text-espresso">Inquire</a>
+        <button type="button" class="nav-hamburger lg:hidden flex flex-col justify-center gap-1.5 w-10 h-10 border border-white/30 rounded bg-transparent cursor-pointer p-2" aria-label="Menu" :class="{ 'active': mobileOpen }" @click="openMobile()">
+          <span class="block w-5 h-0.5 bg-ivory transition-all"></span>
+          <span class="block w-5 h-0.5 bg-ivory transition-all"></span>
+          <span class="block w-5 h-0.5 bg-ivory transition-all"></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Search Overlay -->
+  <div class="ornza-tw fixed inset-0 z-[500] bg-espresso/95 backdrop-blur-md flex flex-col items-center justify-center px-6" x-show="searchOpen" x-transition.opacity @click.self="closeSearch()" style="display:none;">
+    <button type="button" class="absolute top-6 right-6 text-3xl text-champagne/60 hover:text-ivory bg-transparent border-0 cursor-pointer" aria-label="Close search" @click="closeSearch()">×</button>
+    <div class="text-[9px] tracking-[0.35em] uppercase text-gold mb-4">What are you looking for?</div>
+    <div class="w-full max-w-xl">
+      <form action="{{ url('store:search') }}" method="get">
+        <input type="text" name="q" class="w-full bg-transparent border-0 border-b-2 border-gold/30 text-ivory font-display text-2xl md:text-4xl py-4 outline-none focus:border-gold placeholder:text-champagne/25" x-ref="searchInput" placeholder="Search jewellery..." autocomplete="off">
+      </form>
+    </div>
+    <div class="flex flex-wrap justify-center gap-3 mt-8 max-w-2xl">
+      <a href="{{ url('store:category', slug='earrings') }}" class="text-[10px] tracking-[0.15em] uppercase text-champagne/60 px-4 py-2 border border-gold/20 rounded-full no-underline transition-all hover:border-gold hover:text-gold">Earrings</a>
+      <a href="{{ url('store:category', slug='mangalsutras') }}" class="text-[10px] tracking-[0.15em] uppercase text-champagne/60 px-4 py-2 border border-gold/20 rounded-full no-underline transition-all hover:border-gold hover:text-gold">Mangalsutra</a>
+      <a href="{{ url('store:category', slug='silver-925') }}" class="text-[10px] tracking-[0.15em] uppercase text-champagne/60 px-4 py-2 border border-gold/20 rounded-full no-underline transition-all hover:border-gold hover:text-gold">925 Silver</a>
+      <a href="{{ url('store:category', slug='rings') }}" class="text-[10px] tracking-[0.15em] uppercase text-champagne/60 px-4 py-2 border border-gold/20 rounded-full no-underline transition-all hover:border-gold hover:text-gold">Rings</a>
+      <a href="{{ url('store:category', slug='hampers') }}" class="text-[10px] tracking-[0.15em] uppercase text-champagne/60 px-4 py-2 border border-gold/20 rounded-full no-underline transition-all hover:border-gold hover:text-gold">Gift Hampers</a>
+      <a href="{{ url('store:category', slug='pearl') }}" class="text-[10px] tracking-[0.15em] uppercase text-champagne/60 px-4 py-2 border border-gold/20 rounded-full no-underline transition-all hover:border-gold hover:text-gold">Pearl Collection</a>
+      <a href="{{ url('store:category', slug='men-chains') }}" class="text-[10px] tracking-[0.15em] uppercase text-champagne/60 px-4 py-2 border border-gold/20 rounded-full no-underline transition-all hover:border-gold hover:text-gold">Men's Chains</a>
+      <a href="{{ url('store:category', slug='bracelets') }}" class="text-[10px] tracking-[0.15em] uppercase text-champagne/60 px-4 py-2 border border-gold/20 rounded-full no-underline transition-all hover:border-gold hover:text-gold">Bracelets</a>
+    </div>
+  </div>
+
+  <!-- Mobile Nav Overlay -->
+  <div class="ornza-tw fixed inset-0 bg-black/60 z-[400] backdrop-blur-sm" x-show="mobileOpen" x-transition.opacity @click="closeMobile()" style="display:none;"></div>
+
+  <!-- Mobile Nav Drawer -->
+  <div class="ornza-tw fixed top-0 right-0 z-[410] w-full max-w-[340px] h-screen bg-ivory-alt flex flex-col shadow-[-8px_0_40px_rgba(0,0,0,0.2)] overflow-y-auto transition-transform duration-300 ease-out translate-x-full"
+       :class="{ 'translate-x-0': mobileOpen, 'translate-x-full': !mobileOpen }"
+       x-show="mobileOpen" x-transition style="display:none;">
+    <div class="flex items-center justify-between px-5 py-4 border-b border-gold/15">
+      <a href="{{ url('store:home') }}" class="font-display text-xl tracking-[0.12em] text-espresso no-underline">ORN<span class="text-gold italic">Z</span>A</a>
+      <button type="button" class="text-2xl text-taupe bg-transparent border-0 cursor-pointer" aria-label="Close" @click="closeMobile()">×</button>
+    </div>
+    <div class="px-5 py-4">
+      <form action="{{ url('store:search') }}" method="get" class="flex items-center gap-2 bg-ivory border border-gold/20 rounded px-3 py-2.5">
+        <svg class="text-taupe flex-shrink-0" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" name="q" class="flex-1 bg-transparent border-0 outline-none text-sm text-espresso placeholder:text-taupe/50" placeholder="Search jewellery...">
+      </form>
+    </div>
+    <div class="flex flex-wrap gap-2 px-5 pb-4">
+      <a href="{{ url('store:track_order') }}" class="text-[10px] tracking-wide uppercase px-3 py-1.5 bg-gold/10 text-espresso rounded-full no-underline border border-gold/20">📦 Track Order</a>
+      <a href="{{ url('store:reviews') }}" class="text-[10px] tracking-wide uppercase px-3 py-1.5 bg-gold/10 text-espresso rounded-full no-underline border border-gold/20">⭐ Reviews</a>
+      <a href="{{ url('store:category', slug='hampers') }}" class="text-[10px] tracking-wide uppercase px-3 py-1.5 bg-gold/10 text-espresso rounded-full no-underline border border-gold/20">🎁 Hampers</a>
+      <a href="{{ url('store:category', slug='silver-925') }}" class="text-[10px] tracking-wide uppercase px-3 py-1.5 bg-gold/10 text-espresso rounded-full no-underline border border-gold/20">✦ 925 Silver</a>
+    </div>
+    <div class="flex flex-col px-5 pb-6">
+      <a href="{{ url('store:home') }}" class="py-3 text-sm text-espresso no-underline border-b border-gold/10 font-medium">Home</a>
+      <div class="mt-2">
+        <div class="text-[9px] tracking-[0.25em] uppercase text-gold-deep font-semibold py-2">Women's Collection</div>
+        <a href="{{ url('store:category', slug='mangalsutras') }}" class="block py-2.5 text-sm text-taupe no-underline hover:text-gold-deep">Mangalsutras</a>
+        <a href="{{ url('store:category', slug='earrings') }}" class="block py-2.5 text-sm text-taupe no-underline hover:text-gold-deep">Earrings</a>
+        <a href="{{ url('store:category', slug='bracelets') }}" class="block py-2.5 text-sm text-taupe no-underline hover:text-gold-deep">Bracelets</a>
+        <a href="{{ url('store:category', slug='chains') }}" class="block py-2.5 text-sm text-taupe no-underline hover:text-gold-deep">Chains</a>
+        <a href="{{ url('store:category', slug='pendants') }}" class="block py-2.5 text-sm text-taupe no-underline hover:text-gold-deep">Pendants</a>
+        <a href="{{ url('store:category', slug='rings') }}" class="block py-2.5 text-sm text-taupe no-underline hover:text-gold-deep">Rings</a>
+        <a href="{{ url('store:category', slug='pearl') }}" class="block py-2.5 text-sm text-taupe no-underline hover:text-gold-deep">Pearl Collection</a>
+      </div>
+      <div class="mt-2">
+        <div class="text-[9px] tracking-[0.25em] uppercase text-gold-deep font-semibold py-2">Men's Collection</div>
+        <a href="{{ url('store:category', slug='men-bracelets') }}" class="block py-2.5 text-sm text-taupe no-underline hover:text-gold-deep">Bracelets</a>
+        <a href="{{ url('store:category', slug='men-chains') }}" class="block py-2.5 text-sm text-taupe no-underline hover:text-gold-deep">Chains</a>
+        <a href="{{ url('store:category', slug='men-pendants') }}" class="block py-2.5 text-sm text-taupe no-underline hover:text-gold-deep">Pendants</a>
+        <a href="{{ url('store:category', slug='men-rings') }}" class="block py-2.5 text-sm text-taupe no-underline hover:text-gold-deep">Rings</a>
+      </div>
+      <a href="{{ url('store:category', slug='silver-925') }}" class="py-3 text-sm text-espresso no-underline border-t border-gold/10 font-medium">925 Silver</a>
+      <a href="{{ url('store:category', slug='hampers') }}" class="py-3 text-sm text-taupe no-underline hover:text-gold-deep">Gift Hampers</a>
+      <a href="{{ url('store:reviews') }}" class="py-3 text-sm text-taupe no-underline hover:text-gold-deep">Customer Reviews</a>
+      <a href="{{ url('store:track_order') }}" class="py-3 text-sm text-taupe no-underline hover:text-gold-deep">Track Order</a>
+      <a href="{{ url('store:contact') }}" class="py-3 text-sm text-taupe no-underline hover:text-gold-deep">Contact Us</a>
+    </div>
+    <div class="flex gap-3 px-5 py-5 mt-auto border-t border-gold/15">
+      <a href="https://wa.me/919999999999" class="flex-1 text-center py-3 text-[10px] font-semibold tracking-wider uppercase bg-[#25D366] text-white rounded no-underline" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      <a href="{{ url('store:contact') }}" class="flex-1 text-center py-3 text-[10px] font-semibold tracking-wider uppercase bg-espresso text-gold rounded no-underline">Inquire Now</a>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+{% block content %}{% endblock %}
+
+<!-- NEWSLETTER + FOOTER -->
+<section class="ornza-tw relative py-16 px-5 text-center bg-gradient-to-b from-espresso to-[#070501] border-t border-gold/15 overflow-hidden" x-data="{ email: '', msg: '' }">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_100%,rgba(201,168,76,0.1)_0%,transparent_60%)] pointer-events-none"></div>
+  <div class="relative z-10 max-w-xl mx-auto">
+    <div class="text-[9px] tracking-[0.35em] uppercase text-gold font-medium mb-3">Stay in the Loop</div>
+    <h2 class="font-display text-3xl md:text-4xl font-light text-ivory tracking-wide mb-2.5">Get Early Access &amp; <em class="italic text-gold">Exclusive Offers</em></h2>
+    <p class="text-sm text-champagne/80 font-light leading-relaxed">Join 5,000+ subscribers who get first access to new arrivals, seasonal sales, and secret discount codes.</p>
+    <div class="flex max-w-md mx-auto mt-7">
+      <input type="email" x-model="email" class="flex-1 bg-ivory/5 border border-gold/25 border-r-0 text-ivory font-sans text-xs font-light px-5 py-3.5 outline-none rounded-l focus:border-gold placeholder:text-champagne/30" placeholder="Your email address">
+      <button type="button"
+        hx-post="{{ url('store:home') }}"
+        hx-vals='{"action": "newsletter"}'
+        hx-target="#nl-msg"
+        hx-swap="innerHTML"
+        class="bg-gold border-0 text-espresso font-sans text-[9px] font-bold tracking-[0.2em] uppercase px-6 py-3.5 cursor-pointer rounded-r transition-colors hover:bg-gold-light whitespace-nowrap">Subscribe</button>
+    </div>
+    <div class="text-[9px] text-champagne/50 mt-3 tracking-wider" id="nl-msg">No spam, ever. Unsubscribe anytime.</div>
+  </div>
+</section>
+
+<footer class="ornza-tw bg-[#070501] border-t border-gold/10">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12 px-[5%] py-14 pb-10">
+    <div class="sm:col-span-2 lg:col-span-1">
+      <a href="{{ url('store:home') }}" class="font-display text-[1.6rem] tracking-[0.12em] text-ivory no-underline inline-block mb-4">ORN<span class="text-gold italic">Z</span>A</a>
+      <p class="text-xs text-champagne/60 leading-relaxed mb-5 max-w-xs">Where gold meets brilliance. Handcrafted artificial jewellery from Surat — for the woman who celebrates herself every day.</p>
+      <div class="flex gap-2.5">
+        <a href="https://instagram.com/ornza.com2026" class="w-9 h-9 flex items-center justify-center border border-gold/20 rounded-full text-[10px] text-gold no-underline transition-all hover:bg-gold/10 hover:border-gold" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
+        <a href="https://facebook.com/ornza" class="w-9 h-9 flex items-center justify-center border border-gold/20 rounded-full text-[10px] text-gold no-underline transition-all hover:bg-gold/10 hover:border-gold" target="_blank" rel="noopener noreferrer" aria-label="Facebook">FB</a>
+        <a href="https://wa.me/919999999999" class="w-9 h-9 flex items-center justify-center border border-gold/20 rounded-full text-[10px] text-gold no-underline transition-all hover:bg-gold/10 hover:border-gold" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">WA</a>
+        <a href="https://youtube.com/@ornza" class="w-9 h-9 flex items-center justify-center border border-gold/20 rounded-full text-[10px] text-gold no-underline transition-all hover:bg-gold/10 hover:border-gold" target="_blank" rel="noopener noreferrer" aria-label="YouTube">▶</a>
+      </div>
+    </div>
+    <div>
+      <div class="text-[9px] tracking-[0.25em] uppercase text-gold font-semibold mb-4">Collections</div>
+      <ul class="list-none space-y-2.5">
+        <li><a href="{{ url('store:category', slug='women') }}" class="text-xs text-champagne/65 no-underline transition-colors hover:text-gold">Women's Jewellery</a></li>
+        <li><a href="{{ url('store:category', slug='men') }}" class="text-xs text-champagne/65 no-underline transition-colors hover:text-gold">Men's Collection</a></li>
+        <li><a href="{{ url('store:category', slug='silver-925') }}" class="text-xs text-champagne/65 no-underline transition-colors hover:text-gold">925 Silver</a></li>
+        <li><a href="{{ url('store:category', slug='hampers') }}" class="text-xs text-champagne/65 no-underline transition-colors hover:text-gold">Gift Hampers</a></li>
+        <li><a href="{{ url('store:category', slug='mangalsutras') }}" class="text-xs text-champagne/65 no-underline transition-colors hover:text-gold">Mangalsutras</a></li>
+        <li><a href="{{ url('store:category', slug='pearl') }}" class="text-xs text-champagne/65 no-underline transition-colors hover:text-gold">Pearl Collection</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="text-[9px] tracking-[0.25em] uppercase text-gold font-semibold mb-4">Customer Care</div>
+      <ul class="list-none space-y-2.5">
+        <li><a href="{{ url('store:track_order') }}" class="text-xs text-champagne/65 no-underline transition-colors hover:text-gold">Track My Order</a></li>
+        <li><a href="{{ url('users:dashboard') }}" class="text-xs text-champagne/65 no-underline transition-colors hover:text-gold">My Account</a></li>
+        <li><a href="{{ url('store:reviews') }}" class="text-xs text-champagne/65 no-underline transition-colors hover:text-gold">Customer Reviews</a></li>
+        <li><a href="{{ url('store:contact') }}" class="text-xs text-champagne/65 no-underline transition-colors hover:text-gold">Contact Us</a></li>
+        <li><a href="{{ url('store:return_policy') }}" class="text-xs text-champagne/65 no-underline transition-colors hover:text-gold">Return Policy</a></li>
+        <li><a href="{{ url('store:shipping_info') }}" class="text-xs text-champagne/65 no-underline transition-colors hover:text-gold">Shipping Info</a></li>
+        <li><a href="{{ url('store:size_guide') }}" class="text-xs text-champagne/65 no-underline transition-colors hover:text-gold">Size Guide</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="text-[9px] tracking-[0.25em] uppercase text-gold font-semibold mb-4">Company</div>
+      <ul class="list-none space-y-2.5">
+        <li><a href="{{ url('store:about') }}" class="text-xs text-champagne/65 no-underline transition-colors hover:text-gold">Our Story</a></li>
+        <li><a href="{{ url('store:collections') }}" class="text-xs text-champagne/65 no-underline transition-colors hover:text-gold">All Collections</a></li>
+        <li><a href="{{ url('store:wholesale') }}" class="text-xs text-champagne/65 no-underline transition-colors hover:text-gold">Wholesale Enquiry</a></li>
+        <li><a href="{{ url('store:privacy') }}" class="text-xs text-champagne/65 no-underline transition-colors hover:text-gold">Privacy Policy</a></li>
+        <li><a href="{{ url('store:terms') }}" class="text-xs text-champagne/65 no-underline transition-colors hover:text-gold">Terms of Service</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="text-[9px] tracking-[0.25em] uppercase text-gold font-semibold mb-4">Get in Touch</div>
+      <div class="flex gap-2.5 mb-3 text-xs text-champagne/65"><span>📍</span><span>Surat, Gujarat, India — 395001</span></div>
+      <div class="flex gap-2.5 mb-3 text-xs text-champagne/65"><span>📞</span><a href="https://wa.me/919999999999" class="text-champagne/65 no-underline hover:text-gold">+91 99999 99999</a></div>
+      <div class="flex gap-2.5 mb-3 text-xs text-champagne/65"><span>✉</span><a href="mailto:ornzza.com@gmail.com" class="text-champagne/65 no-underline hover:text-gold">ornzza.com@gmail.com</a></div>
+      <div class="flex gap-2.5 mb-5 text-xs text-champagne/65"><span>🕐</span><span>Mon–Sat, 10am–7pm IST</span></div>
+      <div class="text-[8px] tracking-[0.2em] uppercase text-gold/70 mb-2">We Accept</div>
+      <div class="flex flex-wrap gap-1.5">
+        <span class="text-[8px] tracking-wider uppercase px-2 py-1 border border-gold/20 rounded text-champagne/50">UPI</span>
+        <span class="text-[8px] tracking-wider uppercase px-2 py-1 border border-gold/20 rounded text-champagne/50">Visa</span>
+        <span class="text-[8px] tracking-wider uppercase px-2 py-1 border border-gold/20 rounded text-champagne/50">Mastercard</span>
+        <span class="text-[8px] tracking-wider uppercase px-2 py-1 border border-gold/20 rounded text-champagne/50">COD</span>
+      </div>
+    </div>
+  </div>
+  <div class="border-t border-gold/10 px-[5%] py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+    <p class="text-[10px] text-champagne/40 tracking-wider">© 2025 ORNZA. All rights reserved. Crafted with love in Surat, India.</p>
+    <div class="flex gap-5">
+      <a href="{{ url('store:privacy') }}" class="text-[10px] text-champagne/40 no-underline hover:text-gold transition-colors">Privacy</a>
+      <a href="{{ url('store:terms') }}" class="text-[10px] text-champagne/40 no-underline hover:text-gold transition-colors">Terms</a>
+      <a href="{{ url('store:return_policy') }}" class="text-[10px] text-champagne/40 no-underline hover:text-gold transition-colors">Returns</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function ornzaNav() {
+  return {
+    mobileOpen: false,
+    searchOpen: false,
+    openMobile() { this.mobileOpen = true; document.body.style.overflow = 'hidden'; },
+    closeMobile() { this.mobileOpen = false; if (!this.searchOpen) document.body.style.overflow = ''; },
+    openSearch() { this.searchOpen = true; document.body.style.overflow = 'hidden'; this.$nextTick(() => this.$refs.searchInput?.focus()); },
+    closeSearch() { this.searchOpen = false; if (!this.mobileOpen) document.body.style.overflow = ''; },
+    closeAll() { this.mobileOpen = false; this.searchOpen = false; document.body.style.overflow = ''; }
+  };
+}
+
+(function initNavScroll() {
+  const nav = document.getElementById('main-nav');
+  if (!nav) return;
+  const isHero = document.body.classList.contains('has-hero');
+  const isSolid = document.body.classList.contains('nav-solid');
+  if (isSolid && !isHero) nav.classList.add('scrolled');
+  const onScroll = () => {
+    nav.classList.toggle('scrolled', (isSolid && !isHero) || window.scrollY > 100);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+
+{% block extra_scripts %}{% endblock %}
+</body>
+</html>

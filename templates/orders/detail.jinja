@@ -1,0 +1,64 @@
+{% extends "base.jinja" %}
+
+{% block title %}Order {{ order.order_number }} · ORNZA{% endblock %}
+{% block body_class %}has-site-header nav-solid{% endblock %}
+
+{% block content %}
+<main class="pt-28 pb-16 px-4 md:px-8 max-w-3xl mx-auto">
+  <div class="mb-8">
+    <div class="text-[9px] tracking-[0.3em] uppercase text-gold mb-1">Order Confirmed</div>
+    <h1 class="font-display text-3xl text-espresso font-light">{{ order.order_number }}</h1>
+    <p class="text-sm text-taupe mt-1">Placed on {{ order.created_at.strftime('%d %B %Y') }}</p>
+  </div>
+
+  <!-- Status -->
+  <div class="bg-ivory-alt border border-gold/15 rounded-lg p-5 mb-6">
+    <div class="flex items-center justify-between">
+      <div>
+        <div class="text-[9px] tracking-[0.2em] uppercase text-taupe mb-1">Status</div>
+        <div class="text-sm font-semibold text-espresso uppercase tracking-wide">{{ order.status }}</div>
+      </div>
+      {% if order.tracking_number %}
+      <div class="text-right">
+        <div class="text-[9px] tracking-[0.2em] uppercase text-taupe mb-1">Tracking</div>
+        <div class="text-sm font-medium text-gold-deep">{{ order.tracking_number }}</div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Items -->
+  <div class="bg-white border border-gold/15 rounded-lg p-6 mb-6">
+    <h2 class="font-display text-xl text-espresso mb-4">Items</h2>
+    {% for item in order.items.all() %}
+    <div class="flex justify-between py-3 border-b border-gold/10 text-sm">
+      <span class="text-espresso">{{ item.product_name }} × {{ item.quantity }}</span>
+      <span class="text-espresso font-medium">₹{{ "{:,.0f}".format(item.subtotal) }}</span>
+    </div>
+    {% endfor %}
+    <div class="mt-4 space-y-2 text-sm">
+      <div class="flex justify-between text-taupe"><span>Subtotal</span><span>₹{{ "{:,.0f}".format(order.subtotal) }}</span></div>
+      <div class="flex justify-between text-taupe"><span>Shipping</span><span>{% if order.shipping_charge == 0 %}Free{% else %}₹{{ "{:,.0f}".format(order.shipping_charge) }}{% endif %}</span></div>
+      <div class="flex justify-between font-display text-base text-espresso border-t border-gold/15 pt-3"><span>Total</span><span>₹{{ "{:,.0f}".format(order.total) }}</span></div>
+    </div>
+  </div>
+
+  <!-- Shipping Address -->
+  <div class="bg-white border border-gold/15 rounded-lg p-6 mb-6">
+    <h2 class="font-display text-xl text-espresso mb-4">Shipping To</h2>
+    <div class="text-sm text-taupe space-y-1">
+      <div class="text-espresso font-medium">{{ order.full_name }}</div>
+      <div>{{ order.address_line1 }}{% if order.address_line2 %}, {{ order.address_line2 }}{% endif %}</div>
+      <div>{{ order.city }}, {{ order.state }} - {{ order.pincode }}</div>
+      <div>📞 {{ order.phone }}</div>
+    </div>
+  </div>
+
+  <div class="flex gap-4">
+    <a href="{{ url('store:home') }}" class="flex-1 text-center border border-gold/30 text-espresso text-[10px] tracking-[0.15em] uppercase py-3 no-underline hover:border-gold transition-colors rounded">Continue Shopping</a>
+    {% if request.user.is_authenticated %}
+    <a href="{{ url('users:orders') }}" class="flex-1 text-center bg-espresso text-gold text-[10px] tracking-[0.15em] uppercase py-3 no-underline hover:bg-gold hover:text-espresso transition-colors rounded">View All Orders</a>
+    {% endif %}
+  </div>
+</main>
+{% endblock %}

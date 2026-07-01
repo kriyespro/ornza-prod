@@ -1,0 +1,45 @@
+{% extends "base.jinja" %}
+{% from "components/product_card.jinja" import product_card %}
+
+{% block title %}{{ category.name }} · ORNZA Jewellery{% endblock %}
+{% block body_class %}has-site-header nav-solid{% endblock %}
+
+{% block content %}
+<!-- Category Hero -->
+<section class="category-hero">
+  <div class="category-hero-content">
+    <div class="category-hero-label">Collections</div>
+    <h1 class="category-hero-title">{{ category.name }}</h1>
+    {% if category.description %}
+    <p class="category-hero-sub">{{ category.description }}</p>
+    {% endif %}
+  </div>
+</section>
+
+<main class="pt-12 pb-16 px-4 md:px-8 max-w-7xl mx-auto">
+  {% if products %}
+  <div class="product-grid-v2">
+    {% for product in products %}
+      {{ product_card(product) }}
+    {% endfor %}
+  </div>
+  {% if is_paginated %}
+  <div class="flex justify-center gap-2 mt-12">
+    {% if page_obj.has_previous() %}
+    <a href="?page={{ page_obj.previous_page_number() }}" class="px-4 py-2 border border-gold/30 text-espresso text-xs no-underline hover:border-gold">← Prev</a>
+    {% endif %}
+    <span class="px-4 py-2 text-xs text-taupe">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+    {% if page_obj.has_next() %}
+    <a href="?page={{ page_obj.next_page_number() }}" class="px-4 py-2 border border-gold/30 text-espresso text-xs no-underline hover:border-gold">Next →</a>
+    {% endif %}
+  </div>
+  {% endif %}
+  {% else %}
+  <div class="text-center py-20">
+    <div class="text-4xl text-gold mb-4">✦</div>
+    <h2 class="font-display text-2xl text-espresso mb-3">No products in this category yet</h2>
+    <a href="{{ url('store:collections') }}" class="inline-block text-[10px] tracking-[0.15em] uppercase px-6 py-3 border border-gold/40 text-espresso no-underline hover:bg-espresso hover:text-gold transition-colors">Browse All Collections</a>
+  </div>
+  {% endif %}
+</main>
+{% endblock %}

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Account · ORNZA Customer Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="../../ornza-stack.js"></script>
+
+  <link rel="stylesheet" href="../dashboard.css">
+</head>
+<body class="portal">
+  <div class="portal-shell">
+    <aside class="portal-sidebar" id="customer-sidebar" data-page="overview"></aside>
+
+    <div class="portal-sidebar-overlay"></div>
+
+    <main class="portal-main">
+      <header class="portal-topbar">
+        <button class="portal-topbar-toggle" aria-label="Toggle menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <h1 class="portal-topbar-title">Welcome back, Priya</h1>
+        <div class="portal-topbar-spacer"></div>
+        <div class="portal-topbar-actions">
+          <button class="portal-icon-btn" aria-label="Notifications">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <span class="notif-dot"></span>
+          </button>
+        </div>
+      </header>
+
+      <div class="portal-content">
+        <div class="portal-stat-grid">
+          <div class="portal-stat-card">
+            <div class="portal-stat-label">Total Orders</div>
+            <div class="portal-stat-value">12</div>
+            <div class="portal-stat-change up">↑ 2 this month</div>
+            <div class="portal-stat-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/></svg>
+            </div>
+          </div>
+          <div class="portal-stat-card">
+            <div class="portal-stat-label">Active Orders</div>
+            <div class="portal-stat-value">2</div>
+            <div class="portal-stat-change">In transit &amp; processing</div>
+            <div class="portal-stat-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+          </div>
+          <div class="portal-stat-card">
+            <div class="portal-stat-label">Wishlist Items</div>
+            <div class="portal-stat-value">7</div>
+            <div class="portal-stat-change up">↑ 3 added recently</div>
+            <div class="portal-stat-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+          </div>
+          <div class="portal-stat-card">
+            <div class="portal-stat-label">Reward Points</div>
+            <div class="portal-stat-value">480</div>
+            <div class="portal-stat-change">₹48 off next order</div>
+            <div class="portal-stat-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="portal-grid-3-1">
+          <div class="portal-card">
+            <div class="portal-card-header">
+              <h2 class="portal-card-title">Recent Orders</h2>
+              <a href="orders.html" class="portal-btn portal-btn-ghost portal-btn-sm">View All →</a>
+            </div>
+            <div class="portal-table-wrap">
+              <table class="portal-table">
+                <thead>
+                  <tr>
+                    <th>Order</th>
+                    <th>Date</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-href="orders.html">
+                    <td class="order-id">#ORN-2847</td>
+                    <td>Jun 2, 2026</td>
+                    <td>₹4,299</td>
+                    <td><span class="portal-status shipped">Shipped</span></td>
+                  </tr>
+                  <tr data-href="orders.html">
+                    <td class="order-id">#ORN-2812</td>
+                    <td>May 28, 2026</td>
+                    <td>₹2,999</td>
+                    <td><span class="portal-status processing">Processing</span></td>
+                  </tr>
+                  <tr data-href="orders.html">
+                    <td class="order-id">#ORN-2756</td>
+                    <td>May 15, 2026</td>
+                    <td>₹6,499</td>
+                    <td><span class="portal-status delivered">Delivered</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="portal-card">
+            <div class="portal-card-header">
+              <h2 class="portal-card-title">Quick Actions</h2>
+            </div>
+            <div class="portal-card-body" style="display:flex;flex-direction:column;gap:10px;">
+              <a href="../../track-order.html" class="portal-btn portal-btn-outline" style="justify-content:center;">Track an Order</a>
+              <a href="../../hampers.html" class="portal-btn portal-btn-outline" style="justify-content:center;">Shop Gift Hampers</a>
+              <a href="../../contact.html" class="portal-btn portal-btn-outline" style="justify-content:center;">Contact Support</a>
+              <a href="addresses.html" class="portal-btn portal-btn-primary" style="justify-content:center;margin-top:8px;">Manage Addresses</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="portal-card" style="margin-top:24px;">
+          <div class="portal-card-header">
+            <h2 class="portal-card-title">Wishlist Preview</h2>
+            <a href="wishlist.html" class="portal-btn portal-btn-ghost portal-btn-sm">See All →</a>
+          </div>
+          <div class="portal-card-body">
+            <div class="portal-product-grid">
+              <div class="portal-product-card">
+                <div class="portal-product-card-img"><img src="../../images/earrings.png" alt="Aurora Drop Earrings"></div>
+                <div class="portal-product-card-body">
+                  <div class="portal-product-card-name">Aurora Drop Earrings</div>
+                  <div class="portal-product-card-price">₹1,799</div>
+                  <button class="portal-btn portal-btn-primary portal-btn-sm" style="width:100%;justify-content:center;">Add to Cart</button>
+                </div>
+              </div>
+              <div class="portal-product-card">
+                <div class="portal-product-card-img"><img src="../../images/necklaces.png" alt="Pearl Pendant Set"></div>
+                <div class="portal-product-card-body">
+                  <div class="portal-product-card-name">Pearl Pendant Set</div>
+                  <div class="portal-product-card-price">₹2,999</div>
+                  <button class="portal-btn portal-btn-primary portal-btn-sm" style="width:100%;justify-content:center;">Add to Cart</button>
+                </div>
+              </div>
+              <div class="portal-product-card">
+                <div class="portal-product-card-img"><img src="../../images/hamper-brides.png" alt="Bride's Delight Hamper"></div>
+                <div class="portal-product-card-body">
+                  <div class="portal-product-card-name">Bride's Delight Hamper</div>
+                  <div class="portal-product-card-price">₹4,999</div>
+                  <button class="portal-btn portal-btn-primary portal-btn-sm" style="width:100%;justify-content:center;">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="customer-nav.js"></script>
+    <script src="../../portal-enhance.js"></script>
+<script src="../dashboard.js"></script>
+  <script src="../../ornza-enhance.js"></script>
+</body>
+</html>

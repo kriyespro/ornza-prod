@@ -1,0 +1,35 @@
+{% extends "control/base_control.jinja" %}
+{% block title %}Analytics{% endblock %}
+{% block page_title %}Analytics{% endblock %}
+
+{% block content %}
+<div class="bg-white rounded-xl border border-gray-200 p-6">
+  <h2 class="font-semibold text-gray-800 mb-5">Top Products by Orders</h2>
+  {% if top_products %}
+  <table class="w-full text-sm">
+    <thead>
+      <tr class="text-[10px] tracking-wider uppercase text-gray-400 border-b border-gray-100">
+        <th class="text-left pb-3">#</th>
+        <th class="text-left pb-3">Product</th>
+        <th class="text-left pb-3">Category</th>
+        <th class="text-right pb-3">Orders</th>
+        <th class="text-right pb-3">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i, product in enumerate(top_products, 1) %}
+      <tr class="border-b border-gray-50 hover:bg-gray-50">
+        <td class="py-3 text-gray-400 font-mono text-xs">{{ i }}</td>
+        <td class="py-3"><a href="{{ url('store:product', slug=product.slug) }}" class="text-xs text-gray-800 no-underline hover:text-blue-600" target="_blank">{{ product.name }}</a></td>
+        <td class="py-3 text-xs text-gray-500">{{ product.category.name if product.category else '—' }}</td>
+        <td class="py-3 text-xs text-right font-medium">{{ product.order_count }}</td>
+        <td class="py-3 text-xs text-right text-gray-600">₹{{ "{:,.0f}".format(product.price) }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="text-gray-400 text-sm">No order data yet. Start getting orders to see analytics here.</p>
+  {% endif %}
+</div>
+{% endblock %}

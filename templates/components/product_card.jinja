@@ -1,0 +1,67 @@
+{% macro product_card(product, badge=None) %}
+<div class="prod-card-v2">
+  <div class="prod-card-img-wrap">
+    {% if product.image %}
+    <img src="{{ product.image.url }}" alt="{{ product.name }}" loading="lazy">
+    {% else %}
+    <img src="{{ static('images/ring_preview.png') }}" alt="{{ product.name }}" loading="lazy">
+    {% endif %}
+
+    {% if badge %}
+    <span class="prod-badge-new">{{ badge }}</span>
+    {% elif product.discount_percent > 0 %}
+    <span class="prod-badge-discount">-{{ product.discount_percent }}% OFF</span>
+    {% endif %}
+
+    {# Wishlist — HTMX POST, CSRF via body hx-headers #}
+    <button class="prod-wishlist" type="button" aria-label="Wishlist"
+      hx-post="{{ url('users:wishlist_toggle', product_id=product.pk) }}"
+      hx-swap="none">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+      </svg>
+    </button>
+
+    <a href="{{ url('store:product', slug=product.slug) }}" class="prod-quick-view">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+        <circle cx="12" cy="12" r="3"/>
+      </svg>
+      View
+    </a>
+  </div>
+
+  <div class="prod-info-v2">
+    <div class="prod-cat-v2">{% if product.category %}{{ product.category.name }}{% endif %}</div>
+    <div class="prod-name-v2">{{ product.name }}</div>
+    <div class="prod-card-footer">
+      <div class="prod-price-block">
+        <div class="prod-price-line">
+          <span class="prod-price-now">₹{{ "{:,.0f}".format(product.price) }}</span>
+        </div>
+        {% if product.compare_price %}
+        <div class="prod-price-meta">
+          <span class="prod-price-was">₹{{ "{:,.0f}".format(product.compare_price) }}</span>
+          {% if product.discount_percent > 0 %}
+          <span class="prod-price-save">{{ product.discount_percent }}% off</span>
+          {% endif %}
+        </div>
+        {% endif %}
+      </div>
+
+      {# Add to Cart — HTMX POST, CSRF via body hx-headers #}
+      <button type="button" class="prod-add-cart" aria-label="Add to cart"
+        hx-post="{{ url('cart:add', product_id=product.pk) }}"
+        hx-target="#cart-count"
+        hx-swap="outerHTML">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="9" cy="20" r="1"/>
+          <circle cx="17" cy="20" r="1"/>
+          <path d="M3 3h2l2.2 10.3a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6L21 7H6"/>
+        </svg>
+        <span class="prod-add-cart-label">Add</span>
+      </button>
+    </div>
+  </div>
+</div>
+{% endmacro %}

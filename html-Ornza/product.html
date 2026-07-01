@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product · ORNZA · Luxury Artificial Jewellery</title>
+  <meta name="description" content="View product details, materials, pricing and add to cart. ORNZA fine artificial jewellery from Surat.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="ornza-stack.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="ornza-page ornza-page--product has-site-header nav-solid">
+
+  <div id="ornza-site-header" data-page="women" data-nav-mode="solid"></div>
+  <script src="header.js"></script>
+
+  <main class="page ornza-tw pt-28 md:pt-32 pb-16 px-4 md:px-8 max-w-6xl mx-auto" id="product-page">
+    <!-- Loading -->
+    <div id="product-loading" class="text-center py-20 text-taupe text-sm">Loading product…</div>
+
+    <!-- Not found -->
+    <div id="product-not-found" hidden class="text-center py-20 max-w-md mx-auto">
+      <div class="text-4xl text-gold mb-4">✦</div>
+      <h1 class="font-display text-2xl text-espresso mb-3">Product Not Found</h1>
+      <p class="text-sm text-taupe mb-6">This piece may have moved or the link is incorrect.</p>
+      <a href="collections.html" class="inline-block bg-espresso text-gold px-6 py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded no-underline hover:bg-gold hover:text-espresso transition-colors">Browse Collections</a>
+    </div>
+
+    <!-- Product detail -->
+    <div id="product-detail" hidden>
+      <nav class="text-[10px] tracking-wider uppercase text-taupe mb-6" aria-label="Breadcrumb">
+        <a href="index.html" class="text-taupe hover:text-gold-deep no-underline">Home</a>
+        <span class="mx-2">/</span>
+        <a href="collections.html" id="pdp-breadcrumb-cat-link" class="text-taupe hover:text-gold-deep no-underline">Collections</a>
+        <span class="mx-2">/</span>
+        <span id="pdp-breadcrumb-title" class="text-espresso">Product</span>
+      </nav>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14">
+        <div class="relative bg-white border border-gold/20 rounded-lg overflow-hidden shadow-ornza aspect-square flex items-center justify-center p-6">
+          <img id="pdp-image" src="" alt="" class="max-w-full max-h-full object-contain">
+        </div>
+
+        <div class="flex flex-col">
+          <div id="pdp-category" class="text-[9px] tracking-[0.3em] uppercase text-gold-deep font-medium mb-2">Category</div>
+          <h1 id="pdp-title" class="font-display text-3xl md:text-4xl text-espresso font-light leading-tight mb-3">Product Title</h1>
+          <div id="pdp-price" class="font-display text-2xl text-espresso font-medium mb-4">₹0</div>
+          <p id="pdp-desc" class="text-sm text-taupe leading-relaxed mb-6"></p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+            <div class="bg-ivory-alt border border-gold/15 rounded-lg p-4">
+              <div class="text-[9px] tracking-[0.2em] uppercase text-taupe mb-1">Crafted In</div>
+              <div id="pdp-material" class="text-sm text-espresso font-medium"></div>
+            </div>
+            <div class="bg-ivory-alt border border-gold/15 rounded-lg p-4">
+              <div class="text-[9px] tracking-[0.2em] uppercase text-taupe mb-1">Embellishments</div>
+              <div id="pdp-stones" class="text-sm text-espresso font-medium"></div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-3 mb-8">
+            <button type="button" id="pdp-add-cart" class="inline-flex items-center justify-center gap-2 bg-espresso text-gold border border-espresso px-6 py-3.5 text-[10px] font-bold tracking-[0.15em] uppercase rounded transition-all hover:bg-gold hover:text-espresso">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="20" r="1"/><circle cx="17" cy="20" r="1"/><path d="M3 3h2l2.2 10.3a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6L21 7H6"/></svg>
+              Add to Cart
+            </button>
+            <a id="pdp-whatsapp" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 border border-gold/40 text-espresso px-6 py-3.5 text-[10px] font-bold tracking-[0.15em] uppercase rounded no-underline transition-all hover:border-gold hover:text-gold-deep">
+              Order via WhatsApp
+            </a>
+          </div>
+
+          <ul class="text-xs text-taupe space-y-2 border-t border-gold/15 pt-6">
+            <li>✦ Free shipping on orders above ₹999</li>
+            <li>✦ 7-day easy returns · Cash on Delivery available</li>
+            <li>✦ Premium gift packaging included</li>
+            <li>✦ Handcrafted in Surat, Gujarat</li>
+          </ul>
+        </div>
+      </div>
+
+      <section class="mt-16 border-t border-gold/15 pt-10" id="pdp-related-section" hidden>
+        <h2 class="font-display text-xl text-espresso mb-6">You May Also Like</h2>
+        <div id="pdp-related" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
+      </section>
+    </div>
+  </main>
+
+  <div id="ornza-site-footer"></div>
+  <script src="products-data.js"></script>
+  <script src="product-detail.js"></script>
+  <script src="footer.js"></script>
+  <script src="ornza-enhance.js"></script>
+  <script src="cart.js"></script>
+</body>
+</html>

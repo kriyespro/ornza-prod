@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hampers · ORNZA Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="../../ornza-stack.js"></script>
+
+  <link rel="stylesheet" href="../dashboard.css">
+</head>
+<body class="portal">
+  <div class="portal-shell">
+    <aside class="portal-sidebar admin-sidebar" id="admin-sidebar" data-page="hampers"></aside>
+    <div class="portal-sidebar-overlay"></div>
+    <main class="portal-main">
+      <header class="portal-topbar">
+        <button class="portal-topbar-toggle" aria-label="Toggle menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+        <h1 class="portal-topbar-title">Gift Hampers</h1>
+        <div class="portal-topbar-spacer"></div>
+        <a href="product-add.html" class="portal-btn portal-btn-primary portal-btn-sm">+ Add Hamper</a>
+      </header>
+      <div class="portal-content">
+        <div class="portal-stat-grid" style="grid-template-columns:repeat(3,1fr);margin-bottom:24px;">
+          <div class="portal-stat-card"><div class="portal-stat-label">Total Hampers</div><div class="portal-stat-value">7</div></div>
+          <div class="portal-stat-card"><div class="portal-stat-label">Orders (MTD)</div><div class="portal-stat-value">64</div></div>
+          <div class="portal-stat-card"><div class="portal-stat-label">Revenue (MTD)</div><div class="portal-stat-value">₹3.2L</div></div>
+        </div>
+        <div class="portal-product-grid">
+          <div class="portal-product-card">
+            <div class="portal-product-card-img"><img src="../../images/hamper-brides.png" alt=""></div>
+            <div class="portal-product-card-body">
+              <div class="portal-product-card-name">Bride's Delight</div>
+              <div class="portal-product-card-price">₹4,999 · Stock 24</div>
+              <div class="portal-product-card-actions">
+                <a href="product-edit.html?sku=ORN-HMP-001" class="portal-btn portal-btn-outline portal-btn-sm" style="flex:1;justify-content:center;">Edit</a>
+                <span class="portal-status active" style="font-size:9px;">Bestseller</span>
+              </div>
+            </div>
+          </div>
+          <div class="portal-product-card">
+            <div class="portal-product-card-img"><img src="../../images/hamper-anniversary.png" alt=""></div>
+            <div class="portal-product-card-body">
+              <div class="portal-product-card-name">Anniversary Gold</div>
+              <div class="portal-product-card-price">₹3,799 · Stock 18</div>
+              <div class="portal-product-card-actions"><a href="product-edit.html?sku=ORN-HMP-002" class="portal-btn portal-btn-outline portal-btn-sm" style="flex:1;justify-content:center;">Edit</a></div>
+            </div>
+          </div>
+          <div class="portal-product-card">
+            <div class="portal-product-card-img"><img src="../../images/hamper-birthday.png" alt=""></div>
+            <div class="portal-product-card-body">
+              <div class="portal-product-card-name">Birthday Sparkle</div>
+              <div class="portal-product-card-price">₹2,999 · Stock 22</div>
+              <div class="portal-product-card-actions"><a href="product-edit.html?sku=ORN-HMP-003" class="portal-btn portal-btn-outline portal-btn-sm" style="flex:1;justify-content:center;">Edit</a></div>
+            </div>
+          </div>
+          <div class="portal-product-card">
+            <div class="portal-product-card-img"><img src="../../images/festival-diwali.png" alt=""></div>
+            <div class="portal-product-card-body">
+              <div class="portal-product-card-name">Diwali Luxury</div>
+              <div class="portal-product-card-price">₹5,499 · Stock 15</div>
+              <div class="portal-product-card-actions"><a href="product-edit.html?sku=ORN-HMP-004" class="portal-btn portal-btn-outline portal-btn-sm" style="flex:1;justify-content:center;">Edit</a></div>
+            </div>
+          </div>
+          <div class="portal-product-card">
+            <div class="portal-product-card-img"><img src="../../images/bracelets.png" alt=""></div>
+            <div class="portal-product-card-body">
+              <div class="portal-product-card-name">Men's Power</div>
+              <div class="portal-product-card-price">₹3,499 · Stock 12</div>
+              <div class="portal-product-card-actions"><a href="product-edit.html?sku=ORN-HMP-005" class="portal-btn portal-btn-outline portal-btn-sm" style="flex:1;justify-content:center;">Edit</a></div>
+            </div>
+          </div>
+          <div class="portal-product-card">
+            <div class="portal-product-card-img"><img src="../../images/necklaces.png" alt=""></div>
+            <div class="portal-product-card-body">
+              <div class="portal-product-card-name">Pearl Luxury</div>
+              <div class="portal-product-card-price">₹4,299 · Stock 14</div>
+              <div class="portal-product-card-actions"><a href="product-edit.html?sku=ORN-HMP-006" class="portal-btn portal-btn-outline portal-btn-sm" style="flex:1;justify-content:center;">Edit</a></div>
+            </div>
+          </div>
+          <div class="portal-product-card">
+            <div class="portal-product-card-img"><img src="../../images/packaging-hero.png" alt=""></div>
+            <div class="portal-product-card-body">
+              <div class="portal-product-card-name">Custom Hamper</div>
+              <div class="portal-product-card-price">₹2,499+ · Build your own</div>
+              <div class="portal-product-card-actions"><a href="product-edit.html?sku=ORN-HMP-007" class="portal-btn portal-btn-outline portal-btn-sm" style="flex:1;justify-content:center;">Edit</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="admin-nav.js"></script>
+    <script src="../../portal-enhance.js"></script>
+<script src="../dashboard.js"></script>
+  <script src="../../ornza-enhance.js"></script>
+</body>
+</html>

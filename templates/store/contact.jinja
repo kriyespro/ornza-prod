@@ -1,0 +1,150 @@
+{% extends "base.jinja" %}
+
+{% block title %}Contact Us · ORNZA Jewellery Surat{% endblock %}
+{% block meta_description %}Contact ORNZA Surat showroom for custom jewellery inquiries, bulk orders, sizing.{% endblock %}
+{% block body_class %}has-site-header nav-solid{% endblock %}
+
+{% block content %}
+<div class="page">
+
+  <div class="page-header">
+    <div class="badge">Atelier Showroom</div>
+    <h1 class="page-title">Connect With Us</h1>
+    <p class="page-desc">Inquire about customized jewellery sizing, custom commissions, or private collection previews at our Surat showroom.</p>
+  </div>
+
+  <div class="contact-section">
+    <div class="contact-grid">
+
+      <div class="contact-info-panel">
+        <div>
+          <h2 class="contact-block-title">The Showroom</h2>
+          <div class="showroom-card">
+            <div class="showroom-title">ORNZA Surat HQ</div>
+            <p class="showroom-detail">
+              402-405, Gold Crest Tower, Diamond Hub Road,<br>
+              Mahidharpura, Surat - 395003,<br>
+              Gujarat, India
+            </p>
+            <div class="showroom-hours">
+              Monday – Saturday: 11:00 AM – 7:30 PM (IST)<br>
+              Sunday: Closed (By Private Appointment Only)
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-methods">
+          <div class="method-item">
+            <div class="method-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="method-label">Direct Lines</div>
+              <div class="method-val">+91 99999 99999 · +91 98888 88888</div>
+            </div>
+          </div>
+          <div class="method-item">
+            <div class="method-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="method-label">Email Inquiries</div>
+              <div class="method-val"><a href="mailto:ornzza.com@gmail.com">ornzza.com@gmail.com</a></div>
+            </div>
+          </div>
+          <div class="method-item">
+            <div class="method-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </div>
+            <div>
+              <div class="method-label">Instant WhatsApp Help</div>
+              <div class="method-val"><a href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer">Message Our Concierge</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-container">
+          <div class="map-bg-grid"></div>
+          <div class="map-placeholder">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/>
+              <circle cx="12" cy="10" r="3" fill="currentColor" opacity="0.3"/>
+            </svg>
+            <div>
+              <div class="map-text-primary">Surat Diamond District</div>
+              <div class="map-text-secondary">Mahidharpura, Surat - 395003</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-container">
+        <h2 class="contact-block-title">Send An Inquiry</h2>
+        {% if success %}
+        <div class="form-message success">Thank you! We'll get back to you within 24 hours.</div>
+        {% endif %}
+        <form method="post" action="{{ url('store:contact') }}">
+          {{ csrf_input }}
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="contact-name">Full Name</label>
+              <input type="text" id="contact-name" name="name" class="form-input" placeholder="e.g. Neha Patel" required>
+            </div>
+            <div class="form-group">
+              <label for="contact-email">Email Address</label>
+              <input type="email" id="contact-email" name="email" class="form-input" placeholder="e.g. neha@example.com" required>
+            </div>
+            <div class="form-group full-width">
+              <label for="contact-subject">Inquiry Subject</label>
+              <input type="text" id="contact-subject" name="subject" class="form-input" placeholder="e.g. Bulk Order Sizing / Custom Plating" required>
+            </div>
+            <div class="form-group full-width">
+              <label for="contact-message">Message Details</label>
+              <textarea id="contact-message" name="message" class="form-input form-textarea" placeholder="Share specific sizes, collections, or custom requests..." required></textarea>
+            </div>
+          </div>
+          <button type="submit" class="form-submit-btn">Send Inquiry</button>
+        </form>
+      </div>
+
+    </div>
+
+    <div class="faq-section">
+      <h2 class="contact-block-title" style="text-align: center;">Frequently Asked Questions</h2>
+      <div class="faq-accordion" x-data="{ open: null }">
+        {% set faqs = [
+          ('What materials are ORNZA pieces crafted in?', 'ORNZA specializes in high-fidelity luxury artificial jewellery. Our base metals are 925 Sterling Silver, hypoallergenic lead-free brass, or anti-tarnish alloys, layered with 5 coatings of 18k or 22k gold vermeil. We use VVS1 grade moissanites and Swiss cubic zirconia.'),
+          ('How do I care for my ORNZA jewellery?', 'Avoid direct contact with strong chemicals, perfumes, and sanitizers. Wipe down with a clean, soft cloth after wearing to remove skin oils, and store in the airtight ORNZA pouch provided. Avoid swimming or heavy workouts while wearing.'),
+          ('Do you ship worldwide?', 'Yes, we ship worldwide from our Surat atelier. Domestic shipping in India takes 3-5 business days, international express shipping takes 7-12 business days. All shipments are fully insured and trackable.'),
+          ('Can I order customized sizes or bulk pieces?', 'Absolutely. We control the entire casting and stone-setting lifecycle in our Surat workshop, allowing us to alter ring sizing, bracelet lengths, or accommodate large-scale bulk orders for weddings and events. Contact our design concierge via WhatsApp.'),
+        ] %}
+        {% for i, (q, a) in enumerate(faqs) %}
+        <div class="faq-item" :class="{ 'active': open === {{ i }} }">
+          <button type="button" class="faq-trigger" @click="open = open === {{ i }} ? null : {{ i }}">
+            <span class="faq-question">{{ q }}</span>
+            <span class="faq-icon"><span></span><span></span></span>
+          </button>
+          <div class="faq-content" x-show="open === {{ i }}" x-transition x-cloak>
+            <div class="faq-answer">{{ a }}</div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="social-row">
+    <a href="https://instagram.com/ornza.com2026" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
+    </a>
+    <a href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+    </a>
+  </div>
+</div>
+
+<a href="https://wa.me/919999999999" class="wa-sticky-btn" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="wa-tooltip">Chat with us</span>
+</a>
+{% endblock %}

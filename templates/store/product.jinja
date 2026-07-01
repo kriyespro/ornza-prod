@@ -1,0 +1,105 @@
+{% extends "base.jinja" %}
+{% from "components/product_card.jinja" import product_card %}
+
+{% block title %}{{ product.name }} · ORNZA Jewellery{% endblock %}
+{% block meta_description %}{{ product.description[:160] }}{% endblock %}
+{% block body_class %}has-site-header nav-solid{% endblock %}
+
+{% block content %}
+<main class="pt-28 md:pt-32 pb-16 px-4 md:px-8 max-w-6xl mx-auto">
+
+  <!-- Breadcrumb -->
+  <nav class="text-[10px] tracking-wider uppercase text-taupe mb-6" aria-label="Breadcrumb">
+    <a href="{{ url('store:home') }}" class="text-taupe hover:text-gold-deep no-underline">Home</a>
+    <span class="mx-2">/</span>
+    {% if product.category %}
+    <a href="{{ url('store:category', slug=product.category.slug) }}" class="text-taupe hover:text-gold-deep no-underline">{{ product.category.name }}</a>
+    <span class="mx-2">/</span>
+    {% endif %}
+    <span class="text-espresso">{{ product.name }}</span>
+  </nav>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14">
+    {% include "partials/_product_gallery.jinja" %}
+
+    <!-- Info -->
+    <div class="flex flex-col">
+      {% if product.category %}
+      <div class="text-[9px] tracking-[0.3em] uppercase text-gold-deep font-medium mb-2">{{ product.category.name }}</div>
+      {% endif %}
+      <h1 class="font-display text-3xl md:text-4xl text-espresso font-light leading-tight mb-3">{{ product.name }}</h1>
+      <div class="font-display text-2xl text-espresso font-medium mb-4">₹{{ "{:,.0f}".format(product.price) }}
+        {% if product.compare_price %}
+        <span class="text-base text-taupe line-through ml-2">₹{{ "{:,.0f}".format(product.compare_price) }}</span>
+        {% if product.discount_percent > 0 %}
+        <span class="text-sm text-green-600 ml-2">{{ product.discount_percent }}% off</span>
+        {% endif %}
+        {% endif %}
+      </div>
+      <p class="text-sm text-taupe leading-relaxed mb-6">{{ product.description }}</p>
+
+      {% if product.material or product.stones %}
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+        {% if product.material %}
+        <div class="bg-ivory-alt border border-gold/15 rounded-lg p-4">
+          <div class="text-[9px] tracking-[0.2em] uppercase text-taupe mb-1">Crafted In</div>
+          <div class="text-sm text-espresso font-medium">{{ product.material }}</div>
+        </div>
+        {% endif %}
+        {% if product.stones %}
+        <div class="bg-ivory-alt border border-gold/15 rounded-lg p-4">
+          <div class="text-[9px] tracking-[0.2em] uppercase text-taupe mb-1">Embellishments</div>
+          <div class="text-sm text-espresso font-medium">{{ product.stones }}</div>
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      <div class="flex flex-wrap gap-3 mb-8">
+        {% if product.stock > 0 %}
+        <form method="post" action="{{ url('cart:add', product_id=product.pk) }}">
+          {{ csrf_input }}
+          <button type="submit" class="inline-flex items-center justify-center gap-2 bg-espresso text-gold border border-espresso px-6 py-3.5 text-[10px] font-bold tracking-[0.15em] uppercase rounded transition-all hover:bg-gold hover:text-espresso"
+            hx-post="{{ url('cart:add', product_id=product.pk) }}"
+            hx-target="#cart-count"
+            hx-swap="outerHTML">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="20" r="1"/><circle cx="17" cy="20" r="1"/><path d="M3 3h2l2.2 10.3a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6L21 7H6"/></svg>
+            Add to Cart
+          </button>
+        </form>
+        {% else %}
+        <button disabled class="inline-flex items-center justify-center gap-2 bg-gray-200 text-gray-400 px-6 py-3.5 text-[10px] font-bold tracking-[0.15em] uppercase rounded cursor-not-allowed">
+          Out of Stock
+        </button>
+        {% endif %}
+        <a href="https://wa.me/919999999999?text=Hi, I'm interested in {{ product.name }} (₹{{ product.price }})" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 border border-gold/40 text-espresso px-6 py-3.5 text-[10px] font-bold tracking-[0.15em] uppercase rounded no-underline transition-all hover:border-gold hover:text-gold-deep">
+          Order via WhatsApp
+        </a>
+      </div>
+
+      <ul class="text-xs text-taupe space-y-2 border-t border-gold/15 pt-6">
+        <li>✦ Free shipping on orders above ₹999</li>
+        <li>✦ 7-day easy returns · Cash on Delivery available</li>
+        <li>✦ Premium gift packaging included</li>
+        <li>✦ Handcrafted in Surat, Gujarat</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Related Products -->
+  {% if related %}
+  <section class="mt-20">
+    <div class="sec-head">
+      <div class="sec-eyebrow">You May Also Like</div>
+      <h2 class="sec-title">Related Pieces</h2>
+    </div>
+    <div class="product-grid-v2">
+      {% for p in related %}
+        {{ product_card(p) }}
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+</main>
+{% endblock %}

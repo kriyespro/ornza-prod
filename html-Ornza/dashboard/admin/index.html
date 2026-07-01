@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard · ORNZA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="../../ornza-stack.js"></script>
+
+  <link rel="stylesheet" href="../dashboard.css">
+</head>
+<body class="portal">
+  <div class="portal-shell">
+    <aside class="portal-sidebar admin-sidebar" id="admin-sidebar" data-page="dashboard"></aside>
+
+    <div class="portal-sidebar-overlay"></div>
+
+    <main class="portal-main">
+      <header class="portal-topbar">
+        <button class="portal-topbar-toggle" aria-label="Toggle menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <h1 class="portal-topbar-title">Dashboard</h1>
+        <div class="portal-topbar-spacer"></div>
+        <div class="portal-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" placeholder="Search orders, products…">
+        </div>
+        <div class="portal-topbar-actions">
+          <button class="portal-icon-btn" aria-label="Notifications">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <span class="notif-dot"></span>
+          </button>
+        </div>
+      </header>
+
+      <div class="portal-content">
+        <div class="portal-page-header">
+          <p>Store overview for June 2026 · Last updated just now</p>
+        </div>
+
+        <div class="portal-stat-grid">
+          <div class="portal-stat-card">
+            <div class="portal-stat-label">Revenue (MTD)</div>
+            <div class="portal-stat-value">₹4.2L</div>
+            <div class="portal-stat-change up">↑ 18% vs last month</div>
+            <div class="portal-stat-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+          </div>
+          <div class="portal-stat-card">
+            <div class="portal-stat-label">Orders</div>
+            <div class="portal-stat-value">186</div>
+            <div class="portal-stat-change up">↑ 24 new today</div>
+            <div class="portal-stat-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/></svg>
+            </div>
+          </div>
+          <div class="portal-stat-card">
+            <div class="portal-stat-label">Customers</div>
+            <div class="portal-stat-value">10.4K</div>
+            <div class="portal-stat-change up">↑ 312 this week</div>
+            <div class="portal-stat-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            </div>
+          </div>
+          <div class="portal-stat-card">
+            <div class="portal-stat-label">Avg. Order Value</div>
+            <div class="portal-stat-value">₹2,260</div>
+            <div class="portal-stat-change down">↓ 3% vs last month</div>
+            <div class="portal-stat-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="portal-grid-3-1">
+          <div class="portal-card">
+            <div class="portal-card-header">
+              <h2 class="portal-card-title">Revenue Overview</h2>
+              <select class="portal-form-select" style="width:auto;padding:6px 12px;font-size:12px;">
+                <option>Last 7 days</option>
+                <option>Last 30 days</option>
+                <option>This year</option>
+              </select>
+            </div>
+            <div class="portal-card-body">
+              <div class="portal-chart-placeholder">
+                <div class="portal-chart-bar" style="height:45%;"></div>
+                <div class="portal-chart-bar" style="height:62%;"></div>
+                <div class="portal-chart-bar" style="height:55%;"></div>
+                <div class="portal-chart-bar" style="height:78%;"></div>
+                <div class="portal-chart-bar" style="height:70%;"></div>
+                <div class="portal-chart-bar" style="height:88%;"></div>
+                <div class="portal-chart-bar" style="height:95%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="portal-card">
+            <div class="portal-card-header">
+              <h2 class="portal-card-title">Recent Activity</h2>
+            </div>
+            <div class="portal-card-body" style="padding-top:8px;">
+              <div class="portal-activity-item">
+                <div class="portal-activity-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/></svg>
+                </div>
+                <div>
+                  <div class="portal-activity-text">New order <strong>#ORN-2891</strong> — ₹3,499</div>
+                  <div class="portal-activity-time">2 minutes ago</div>
+                </div>
+              </div>
+              <div class="portal-activity-item">
+                <div class="portal-activity-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <div>
+                  <div class="portal-activity-text">New customer registered — <strong>Riya Patel</strong></div>
+                  <div class="portal-activity-time">18 minutes ago</div>
+                </div>
+              </div>
+              <div class="portal-activity-item">
+                <div class="portal-activity-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <div>
+                  <div class="portal-activity-text">5-star review on <strong>Aurora Earrings</strong></div>
+                  <div class="portal-activity-time">1 hour ago</div>
+                </div>
+              </div>
+              <div class="portal-activity-item">
+                <div class="portal-activity-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/></svg>
+                </div>
+                <div>
+                  <div class="portal-activity-text">Order <strong>#ORN-2847</strong> shipped via Delhivery</div>
+                  <div class="portal-activity-time">3 hours ago</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="portal-grid-2" style="margin-top:24px;">
+          <div class="portal-card">
+            <div class="portal-card-header">
+              <h2 class="portal-card-title">Recent Orders</h2>
+              <a href="orders.html" class="portal-btn portal-btn-ghost portal-btn-sm">View All →</a>
+            </div>
+            <div class="portal-table-wrap">
+              <table class="portal-table">
+                <thead>
+                  <tr><th>Order</th><th>Customer</th><th>Total</th><th>Status</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="order-id">#ORN-2891</td>
+                    <td>Riya Patel</td>
+                    <td>₹3,499</td>
+                    <td><span class="portal-status pending">Pending</span></td>
+                  </tr>
+                  <tr>
+                    <td class="order-id">#ORN-2888</td>
+                    <td>Arjun Mehta</td>
+                    <td>₹1,799</td>
+                    <td><span class="portal-status processing">Processing</span></td>
+                  </tr>
+                  <tr>
+                    <td class="order-id">#ORN-2885</td>
+                    <td>Priya Sharma</td>
+                    <td>₹6,499</td>
+                    <td><span class="portal-status shipped">Shipped</span></td>
+                  </tr>
+                  <tr>
+                    <td class="order-id">#ORN-2880</td>
+                    <td>Neha Gupta</td>
+                    <td>₹4,999</td>
+                    <td><span class="portal-status delivered">Delivered</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="portal-card">
+            <div class="portal-card-header">
+              <h2 class="portal-card-title">Top Products</h2>
+              <a href="products.html" class="portal-btn portal-btn-ghost portal-btn-sm">Manage →</a>
+            </div>
+            <div class="portal-table-wrap">
+              <table class="portal-table">
+                <thead>
+                  <tr><th>Product</th><th>Sold</th><th>Revenue</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="portal-table-product">
+                        <img src="../../images/earrings.png" alt="">
+                        <span>Aurora Drop Earrings</span>
+                      </div>
+                    </td>
+                    <td>142</td>
+                    <td>₹2.55L</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="portal-table-product">
+                        <img src="../../images/necklaces.png" alt="">
+                        <span>Pearl Pendant Set</span>
+                      </div>
+                    </td>
+                    <td>98</td>
+                    <td>₹2.94L</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="portal-table-product">
+                        <img src="../../images/hamper-brides.png" alt="">
+                        <span>Bride's Delight Hamper</span>
+                      </div>
+                    </td>
+                    <td>64</td>
+                    <td>₹3.20L</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="portal-table-product">
+                        <img src="../../images/rings.png" alt="">
+                        <span>Celestine Solitaire Ring</span>
+                      </div>
+                    </td>
+                    <td>87</td>
+                    <td>₹1.39L</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="admin-nav.js"></script>
+    <script src="../../portal-enhance.js"></script>
+<script src="../dashboard.js"></script>
+  <script src="../../ornza-enhance.js"></script>
+</body>
+</html>

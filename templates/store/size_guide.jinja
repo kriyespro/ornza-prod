@@ -1,0 +1,72 @@
+{% extends "base.jinja" %}
+{% block title %}Size Guide · ORNZA Jewellery{% endblock %}
+{% block body_class %}has-site-header nav-solid{% endblock %}
+{% block content %}
+<div class="page">
+  <div class="page-header">
+    <div class="badge">Fit Guide</div>
+    <h1 class="page-title">Size Guide</h1>
+    <p class="page-desc">Find your perfect fit for rings, bangles, and bracelets.</p>
+  </div>
+  <div class="contact-section ornza-tw" style="max-width:860px;margin:0 auto 80px;">
+
+    <!-- Rings -->
+    <div class="mb-10">
+      <h2 class="contact-block-title">Ring Sizing</h2>
+      <p class="text-sm text-taupe mb-5 leading-relaxed">Wrap a thin strip of paper around your finger where you'd wear the ring. Mark where it overlaps and measure the length in mm. Use the table below to find your size.</p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-espresso text-gold text-[10px] tracking-[0.15em] uppercase">
+              <th class="px-4 py-3 text-left">India Size</th>
+              <th class="px-4 py-3 text-left">US Size</th>
+              <th class="px-4 py-3 text-left">Circumference (mm)</th>
+              <th class="px-4 py-3 text-left">Diameter (mm)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in [('6','3','44.2','14.1'),('8','4','46.8','14.9'),('10','5','49.3','15.7'),('12','6','51.9','16.5'),('14','7','54.4','17.3'),('16','8','57.0','18.1'),('18','9','59.5','18.9'),('20','10','62.1','19.8'),('22','11','64.6','20.6'),('24','12','67.2','21.4')] %}
+            <tr class="border-b border-gold/10 hover:bg-ivory-alt transition-colors">
+              <td class="px-4 py-3 font-medium">{{ row[0] }}</td>
+              <td class="px-4 py-3 text-taupe">{{ row[1] }}</td>
+              <td class="px-4 py-3 text-taupe">{{ row[2] }}</td>
+              <td class="px-4 py-3 text-taupe">{{ row[3] }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Bangles -->
+    <div class="mb-10">
+      <h2 class="contact-block-title">Bangle &amp; Kada Sizing</h2>
+      <p class="text-sm text-taupe mb-5 leading-relaxed">Make a fist and measure the widest part of your hand in cm.</p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-espresso text-gold text-[10px] tracking-[0.15em] uppercase">
+              <th class="px-4 py-3 text-left">Size</th>
+              <th class="px-4 py-3 text-left">Hand Width</th>
+              <th class="px-4 py-3 text-left">Inner Diameter (mm)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in [('XS','≤ 6.5 cm','56'),('S','6.5 – 7 cm','58'),('M','7 – 7.5 cm','60'),('L','7.5 – 8 cm','62'),('XL','8 – 8.5 cm','64'),('XXL','≥ 8.5 cm','66')] %}
+            <tr class="border-b border-gold/10 hover:bg-ivory-alt transition-colors">
+              <td class="px-4 py-3 font-medium">{{ row[0] }}</td>
+              <td class="px-4 py-3 text-taupe">{{ row[1] }}</td>
+              <td class="px-4 py-3 text-taupe">{{ row[2] }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="bg-gold/10 border border-gold/25 rounded-lg p-5 text-sm text-espresso">
+      <strong>Need help?</strong> WhatsApp us at <a href="https://wa.me/919999999999" class="text-gold-deep no-underline hover:underline">+91 99999 99999</a> with your measurements and we'll recommend the right size for you.
+    </div>
+  </div>
+</div>
+{% endblock %}

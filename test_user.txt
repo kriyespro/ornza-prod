@@ -1,0 +1,10 @@
+## Test Credentials
+
+### Superuser / Admin
+username: admin
+password: admin1234
+admin panel: http://127.0.0.1:8000/admin/
+django admin: http://127.0.0.1:8000/sd/
+
+### Test Customer
+(Register at: http://127.0.0.1:8000/users/register/)
