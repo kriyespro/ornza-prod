@@ -10,84 +10,8 @@
     <h1 class="font-display text-3xl text-espresso font-light">Your Cart</h1>
   </div>
 
-  {% if cart.items.count() > 0 %}
-  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-    <!-- Items -->
-    <div class="lg:col-span-2" id="cart-items">
-      {% for item in cart.items.select_related('product').all() %}
-      <div class="flex gap-4 border-b border-gold/15 py-5">
-        {% if item.product.image %}
-        <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="w-20 h-20 object-cover rounded border border-gold/15">
-        {% else %}
-        <img src="{{ static('images/ring_preview.png') }}" alt="{{ item.product.name }}" class="w-20 h-20 object-cover rounded border border-gold/15">
-        {% endif %}
-        <div class="flex-1">
-          <div class="font-display text-base text-espresso mb-1">{{ item.product.name }}</div>
-          {% if item.product.category %}<div class="text-[9px] tracking-[0.2em] uppercase text-gold mb-2">{{ item.product.category.name }}</div>{% endif %}
-          <div class="flex items-center gap-4">
-            <form method="post" action="{{ url('cart:update', item_id=item.pk) }}" class="flex items-center gap-2"
-              hx-post="{{ url('cart:update', item_id=item.pk) }}"
-              hx-target="#cart-items"
-              hx-swap="innerHTML">
-              {{ csrf_input }}
-              <button type="submit" name="quantity" value="{{ item.quantity - 1 }}" class="w-7 h-7 border border-gold/25 rounded text-espresso hover:border-gold transition-colors text-sm">−</button>
-              <span class="text-sm font-medium text-espresso w-6 text-center">{{ item.quantity }}</span>
-              <button type="submit" name="quantity" value="{{ item.quantity + 1 }}" class="w-7 h-7 border border-gold/25 rounded text-espresso hover:border-gold transition-colors text-sm">+</button>
-            </form>
-            <form method="post" action="{{ url('cart:remove', item_id=item.pk) }}"
-              hx-post="{{ url('cart:remove', item_id=item.pk) }}"
-              hx-target="#cart-items"
-              hx-swap="innerHTML">
-              {{ csrf_input }}
-              <button type="submit" class="text-xs text-taupe hover:text-red-500 transition-colors">Remove</button>
-            </form>
-          </div>
-        </div>
-        <div class="text-right">
-          <div class="font-display text-base text-espresso font-medium">₹{{ "{:,.0f}".format(item.subtotal) }}</div>
-          <div class="text-xs text-taupe">₹{{ "{:,.0f}".format(item.product.price) }} each</div>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-
-    <!-- Summary -->
-    <div>
-      <div class="bg-ivory-alt border border-gold/15 rounded-lg p-6">
-        <h2 class="font-display text-xl text-espresso mb-5">Order Summary</h2>
-        <div class="space-y-3 mb-5 text-sm">
-          <div class="flex justify-between text-taupe">
-            <span>Subtotal</span>
-            <span>₹{{ "{:,.0f}".format(cart.total) }}</span>
-          </div>
-          <div class="flex justify-between text-taupe">
-            <span>Shipping</span>
-            <span>{% if cart.total >= 999 %}<span class="text-green-600">Free</span>{% else %}₹99{% endif %}</span>
-          </div>
-          <div class="border-t border-gold/15 pt-3 flex justify-between font-display text-base text-espresso">
-            <span>Total</span>
-            <span>₹{{ "{:,.0f}".format(cart.total + (0 if cart.total >= 999 else 99)) }}</span>
-          </div>
-        </div>
-        <a href="{{ url('cart:checkout') }}" class="block w-full text-center bg-espresso text-gold py-3.5 text-[10px] font-bold tracking-[0.2em] uppercase rounded no-underline transition-all hover:bg-gold hover:text-espresso">
-          Proceed to Checkout
-        </a>
-        <a href="{{ url('store:collections') }}" class="block w-full text-center text-[10px] tracking-[0.15em] uppercase text-taupe no-underline mt-3 hover:text-espresso transition-colors">
-          Continue Shopping
-        </a>
-      </div>
-    </div>
+  <div id="cart-root">
+    {% include "cart/partials/_cart_body.jinja" %}
   </div>
-
-  {% else %}
-  <div class="text-center py-20">
-    <div class="text-5xl text-gold mb-4">🛒</div>
-    <h2 class="font-display text-2xl text-espresso mb-3">Your cart is empty</h2>
-    <p class="text-sm text-taupe mb-8">Discover our beautiful jewellery collections.</p>
-    <a href="{{ url('store:collections') }}" class="inline-flex items-center gap-2 bg-espresso text-gold text-[10px] font-bold tracking-[0.2em] uppercase px-8 py-4 rounded-sm no-underline hover:bg-gold hover:text-espresso transition-all">
-      Shop Now →
-    </a>
-  </div>
-  {% endif %}
 </main>
 {% endblock %}

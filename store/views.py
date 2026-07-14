@@ -1,14 +1,11 @@
 from django.views.generic import TemplateView, ListView, DetailView
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
-from django.utils.decorators import method_decorator
-from django.views.decorators.cache import cache_page
 from core.mixins import RequestContextMixin
 from .models import Product, Category
 from .services import get_product_gallery
 
 
-@method_decorator(cache_page(300), name='dispatch')
 class HomeView(RequestContextMixin, TemplateView):
     template_name = 'store/home.jinja'
 
@@ -24,7 +21,6 @@ class HomeView(RequestContextMixin, TemplateView):
         return ctx
 
 
-@method_decorator(cache_page(300), name='dispatch')
 class CollectionsView(RequestContextMixin, ListView):
     template_name = 'store/collections.jinja'
     context_object_name = 'products'

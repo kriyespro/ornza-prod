@@ -1,11 +1,14 @@
 {% macro product_card(product, badge=None) %}
+{% set detail_url = url('store:product', slug=product.slug) %}
 <div class="prod-card-v2">
   <div class="prod-card-img-wrap">
-    {% if product.image %}
-    <img src="{{ product.image.url }}" alt="{{ product.name }}" loading="lazy">
-    {% else %}
-    <img src="{{ static('images/ring_preview.png') }}" alt="{{ product.name }}" loading="lazy">
-    {% endif %}
+    <a href="{{ detail_url }}" class="prod-card-img-link" aria-label="View {{ product.name }}">
+      {% if product.image %}
+      <img src="{{ product.image.url }}" alt="{{ product.name }}" loading="lazy">
+      {% else %}
+      <img src="{{ static('images/ring_preview.png') }}" alt="{{ product.name }}" loading="lazy">
+      {% endif %}
+    </a>
 
     {% if badge %}
     <span class="prod-badge-new">{{ badge }}</span>
@@ -22,7 +25,7 @@
       </svg>
     </button>
 
-    <a href="{{ url('store:product', slug=product.slug) }}" class="prod-quick-view">
+    <a href="{{ detail_url }}" class="prod-quick-view">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
         <circle cx="12" cy="12" r="3"/>
@@ -33,7 +36,7 @@
 
   <div class="prod-info-v2">
     <div class="prod-cat-v2">{% if product.category %}{{ product.category.name }}{% endif %}</div>
-    <div class="prod-name-v2">{{ product.name }}</div>
+    <a href="{{ detail_url }}" class="prod-name-v2 no-underline text-inherit hover:text-gold-deep transition-colors">{{ product.name }}</a>
     <div class="prod-card-footer">
       <div class="prod-price-block">
         <div class="prod-price-line">
@@ -49,11 +52,12 @@
         {% endif %}
       </div>
 
-      {# Add to Cart — HTMX POST, CSRF via body hx-headers #}
+      {% if product.stock > 0 %}
       <button type="button" class="prod-add-cart" aria-label="Add to cart"
         hx-post="{{ url('cart:add', product_id=product.pk) }}"
         hx-target="#cart-count"
-        hx-swap="outerHTML">
+        hx-swap="outerHTML"
+        hx-disabled-elt="this">
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="9" cy="20" r="1"/>
           <circle cx="17" cy="20" r="1"/>
@@ -61,6 +65,11 @@
         </svg>
         <span class="prod-add-cart-label">Add</span>
       </button>
+      {% else %}
+      <button type="button" class="prod-add-cart opacity-50 cursor-not-allowed" disabled aria-label="Out of stock">
+        <span class="prod-add-cart-label">Sold</span>
+      </button>
+      {% endif %}
     </div>
   </div>
 </div>

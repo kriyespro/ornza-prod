@@ -58,4 +58,5 @@
 [DONE] UI Fix - Ivory page text contrast (about + FAQ sections on nav-solid pages)
 [DONE] Deploy - Docker + docker-compose (web, PostgreSQL, nginx) with .env.prod
 [DONE] Deploy - WEB_PORT default 8080 + scripts/deploy.sh for multi-project servers
+[DONE] Cart fix - Add-to-cart CSRF/cache, HTMX badge, cart partials, clickable product images
 [IN PROGRESS] Phase 4 - Product CRUD via admin, order status updates, WhatsApp integration

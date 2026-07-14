@@ -1,0 +1,26 @@
+{% set shipping = 0 if cart.total >= 999 else 99 %}
+{% set order_total = cart.total + shipping %}
+
+<div class="bg-ivory-alt border border-gold/15 rounded-lg p-6">
+  <h2 class="font-display text-xl text-espresso mb-5">Order Summary</h2>
+  <div class="space-y-3 mb-5 text-sm">
+    <div class="flex justify-between text-taupe">
+      <span>Subtotal ({{ cart.item_count }} item{% if cart.item_count != 1 %}s{% endif %})</span>
+      <span>₹{{ "{:,.0f}".format(cart.total) }}</span>
+    </div>
+    <div class="flex justify-between text-taupe">
+      <span>Shipping</span>
+      <span>{% if cart.total >= 999 %}<span class="text-green-600">Free</span>{% else %}₹99{% endif %}</span>
+    </div>
+    <div class="border-t border-gold/15 pt-3 flex justify-between font-display text-base text-espresso">
+      <span>Total</span>
+      <span>₹{{ "{:,.0f}".format(order_total) }}</span>
+    </div>
+  </div>
+  <a href="{{ url('cart:checkout') }}" class="block w-full text-center bg-espresso text-gold py-3.5 text-[10px] font-bold tracking-[0.2em] uppercase rounded no-underline transition-all hover:bg-gold hover:text-espresso">
+    Proceed to Checkout
+  </a>
+  <a href="{{ url('store:collections') }}" class="block w-full text-center text-[10px] tracking-[0.15em] uppercase text-taupe no-underline mt-3 hover:text-espresso transition-colors">
+    Continue Shopping
+  </a>
+</div>

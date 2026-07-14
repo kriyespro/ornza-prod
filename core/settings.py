@@ -5,9 +5,8 @@ from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Local overrides in `.env`. Production secrets come from Docker Compose `env_file`.
 load_dotenv(BASE_DIR / '.env')
-if (BASE_DIR / '.env.prod').exists():
-    load_dotenv(BASE_DIR / '.env.prod', override=True)
 
 
 def env_bool(key: str, default: bool = False) -> bool:

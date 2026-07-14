@@ -1,0 +1,18 @@
+{% if cart.items.count() > 0 %}
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+  <div class="lg:col-span-2" id="cart-content">
+    {% include "cart/partials/_cart_items.jinja" %}
+  </div>
+  <div id="cart-summary">
+    {% include "cart/partials/_cart_summary.jinja" %}
+  </div>
+</div>
+{% else %}
+<div class="text-center py-20">
+  <h2 class="font-display text-2xl text-espresso mb-3">Your cart is empty</h2>
+  <p class="text-sm text-taupe mb-8">Discover our beautiful jewellery collections.</p>
+  <a href="{{ url('store:collections') }}" class="inline-flex items-center gap-2 bg-espresso text-gold text-[10px] font-bold tracking-[0.2em] uppercase px-8 py-4 rounded-sm no-underline hover:bg-gold hover:text-espresso transition-all">
+    Shop Now →
+  </a>
+</div>
+{% endif %}

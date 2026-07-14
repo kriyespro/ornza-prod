@@ -62,7 +62,8 @@
           <button type="submit" class="inline-flex items-center justify-center gap-2 bg-espresso text-gold border border-espresso px-6 py-3.5 text-[10px] font-bold tracking-[0.15em] uppercase rounded transition-all hover:bg-gold hover:text-espresso"
             hx-post="{{ url('cart:add', product_id=product.pk) }}"
             hx-target="#cart-count"
-            hx-swap="outerHTML">
+            hx-swap="outerHTML"
+            hx-disabled-elt="this">
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="20" r="1"/><circle cx="17" cy="20" r="1"/><path d="M3 3h2l2.2 10.3a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6L21 7H6"/></svg>
             Add to Cart
           </button>
